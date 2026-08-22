@@ -1,0 +1,21 @@
+{
+    "name": "pathmode",
+    "metadata": {
+        "description": "Official Pathmode plugin marketplace — product intent tooling for Claude Code."
+    },
+    "owner": {
+        "name": "Pathmode",
+        "email": "janne@pathmode.io"
+    },
+    "plugins": [
+        {
+            "name": "pathmode",
+            "source": "./",
+            "description": "Product intent for AI-assisted development: compile specs through Socratic conversation, verify code against intent, and hand off decisions — keyless by default, syncs to a Pathmode workspace with an API key.",
+            "author": { "name": "Pathmode" },
+            "homepage": "https://pathmode.io",
+            "license": "MIT",
+            "tags": ["product", "specs", "intent", "planning", "prd"]
+        }
+    ]
+}

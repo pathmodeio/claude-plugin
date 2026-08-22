@@ -1,0 +1,41 @@
+# Pathmode plugin for Claude Code
+
+One install that makes Claude Code product-intent-aware: the [@pathmode/mcp-server](https://www.npmjs.com/package/@pathmode/mcp-server) plus a skill pack for compiling, grilling, verifying, and handing off intent specs.
+
+## Install
+
+```
+/plugin marketplace add pathmodeio/claude-plugin
+/plugin install pathmode@pathmode
+```
+
+No API key needed. Keyless installs run in **local mode**: specs live in `intent.md` in your project, nothing leaves your machine, and 7 local MCP tools are available.
+
+To sync with a Pathmode workspace (22 tools: evidence queries, intent graph, verification recording), create an API key at [pathmode.io/settings](https://pathmode.io/settings) and enter it when the plugin prompts for configuration. The key is stored in your OS keychain, never in a config file.
+
+## What's bundled
+
+**MCP server** — `@pathmode/mcp-server` (via npx, always latest), configured automatically. Local mode with no key; cloud mode with one.
+
+**Skills** — auto-trigger from what you ask Claude, in rough lifecycle order:
+
+| Skill | Use when |
+|-------|----------|
+| `setup-pathmode-workflow` | First-time setup — test commands, issue tracker, status conventions |
+| `compile-intent` | Building a structured spec for what to ship |
+| `verify-intent` | Designing the executable feedback loop for a spec |
+| `grill-intent` | Stress-testing a spec for weaknesses before code is written |
+| `split-intent-to-issues` | Breaking a spec into paste-ready Linear / Jira / GitHub tickets |
+| `review-against-intent` | Checking code changes against the intent's outcomes and constraints |
+| `handoff-intent` | Capturing decisions and discoveries at the end of a session |
+
+## Already ran `npx @pathmode/mcp-server setup`?
+
+The plugin registers its own `pathmode` MCP server, so remove the older entry from your project `.mcp.json` (or `claude_desktop_config.json`) to avoid a duplicate. Skills previously copied into `.claude/skills/` via `install-skills` can also be deleted — the plugin's copies supersede them.
+
+## Maintainer notes (monorepo)
+
+- `skills/` is a synced copy of `packages/mcp-server/skills/` — edit there, then run `node scripts/sync-skills.mjs`. Never edit the copies.
+- Validate before release: `claude plugin validate packages/claude-plugin --strict`
+- Distribution: this directory is published as the public `pathmodeio/claude-plugin` repo (plugin and marketplace in one, `source: "./"`). Bump `version` in `.claude-plugin/plugin.json` on every release — installed plugins auto-update.
+- The server reads the key from `PATHMODE_API_KEY`, injected from the keychain-backed `${user_config.api_key}`. Blank or unsubstituted values fall through to keyless local mode (guarded in the server's `loadConfig`).
