@@ -1,6 +1,8 @@
 # Pathmode plugin for Claude Code
 
-One install that makes Claude Code product-intent-aware: the [@pathmode/mcp-server](https://www.npmjs.com/package/@pathmode/mcp-server) plus a skill pack for compiling, grilling, verifying, and handing off intent specs.
+Turn a vague feature idea into a spec your coding agent can build against. One install gives you the [@pathmode/mcp-server](https://www.npmjs.com/package/@pathmode/mcp-server) plus a skill pack for compiling, grilling, verifying, and handing off intent specs.
+
+The plugin is free. It uses the models you already have access to in Claude Code, so there is nothing to configure and no key to paste. See it in action at [preflight.pathmode.io](https://preflight.pathmode.io), where the readiness gate runs live in your browser.
 
 ## Install
 
