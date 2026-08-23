@@ -11,7 +11,7 @@
         {
             "name": "pathmode",
             "source": "./",
-            "description": "Turn a vague feature idea into a spec your coding agent can build against. Pathmode interrogates the intent behind a request, writes it to intent.md in your repo, then checks the code that comes back against the outcomes and constraints you agreed to. Free: runs with no account or API key, using the models you already have access to in Claude Code. Home: https://preflight.pathmode.io. Connect a Pathmode workspace to sync intent and evidence across a team.",
+            "description": "Run a deterministic preflight on your intent before an agent builds: /preflight scores six calibrated gates and names the exact blockers, no model call, no key. Pathmode also interrogates the intent behind a request (compile-intent), writes it to intent.md in your repo, and checks the code that comes back against the outcomes and constraints you agreed to. Free: uses the models you already have access to in Claude Code. Connect a Pathmode workspace to sync intent and evidence across a team.",
             "author": {
                 "name": "Pathmode"
             },

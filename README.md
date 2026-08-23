@@ -1,8 +1,8 @@
 # Pathmode plugin for Claude Code
 
-Turn a vague feature idea into a spec your coding agent can build against. One install gives you the [@pathmode/mcp-server](https://www.npmjs.com/package/@pathmode/mcp-server) plus a skill pack for compiling, grilling, verifying, and handing off intent specs.
+Turn a vague feature idea into a spec your coding agent can build against. One install gives you the [@pathmode/mcp-server](https://www.npmjs.com/package/@pathmode/mcp-server) plus a skill pack for preflighting, compiling, grilling, verifying, and handing off intent specs.
 
-The plugin is free. It uses the models you already have access to in Claude Code, so there is nothing to configure and no key to paste. See it in action at [preflight.pathmode.io](https://preflight.pathmode.io), where the readiness gate runs live in your browser.
+The plugin is free. It uses the models you already have access to in Claude Code, so there is nothing to configure and no key to paste. Ask Claude to run a preflight (the `preflight` skill) for a deterministic verdict on whether your intent is ready for an agent: six calibrated gates, the exact blockers named, the same result every run. The same gate runs live in your browser at [preflight.pathmode.io](https://preflight.pathmode.io).
 
 ## Install
 
@@ -11,9 +11,9 @@ The plugin is free. It uses the models you already have access to in Claude Code
 /plugin install pathmode@pathmode
 ```
 
-No API key needed. Keyless installs run in **local mode**: specs live in `intent.md` in your project, nothing leaves your machine, and 7 local MCP tools are available.
+No API key needed. Keyless installs run in **local mode**: specs live in `intent.md` in your project, nothing leaves your machine, and 8 local MCP tools are available (including `check_intent_readiness`, the deterministic preflight).
 
-To sync with a Pathmode workspace (22 tools: evidence queries, intent graph, verification recording), create an API key at [pathmode.io/settings](https://pathmode.io/settings) and enter it when the plugin prompts for configuration. The key is stored in your OS keychain, never in a config file.
+To sync with a Pathmode workspace (23 tools: evidence queries, intent graph, verification recording), create an API key at [pathmode.io/settings](https://pathmode.io/settings) and enter it when the plugin prompts for configuration. The key is stored in your OS keychain, never in a config file.
 
 ## What's bundled
 
@@ -25,6 +25,7 @@ To sync with a Pathmode workspace (22 tools: evidence queries, intent graph, ver
 |-------|----------|
 | `setup-pathmode-workflow` | First-time setup — test commands, issue tracker, status conventions |
 | `compile-intent` | Building a structured spec for what to ship |
+| `preflight` | Deterministic readiness verdict before an agent builds — six gates, exact blockers |
 | `verify-intent` | Designing the executable feedback loop for a spec |
 | `grill-intent` | Stress-testing a spec for weaknesses before code is written |
 | `split-intent-to-issues` | Breaking a spec into paste-ready Linear / Jira / GitHub tickets |
