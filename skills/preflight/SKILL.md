@@ -30,6 +30,8 @@ If the verdict passes: say so and stop. Do not invent extra requirements beyond 
 
 The gate is pure functions over the spec text: no model call, no network. Re-running never changes the verdict unless the spec changed. That makes it a floor you can put in front of any implementation work — and it means a passing verdict is reproducible evidence, not an opinion. The same gate runs live at preflight.pathmode.io.
 
+Every `intent_save` also stamps the verdict into the file's frontmatter as `readiness:` ("passed 6/6", or "failed N/6" with the blocking gates named), so anyone reading intent.md — human or agent — sees the gate state without re-running anything. A failing verdict never blocks the save; the gate reports, the user decides.
+
 ## Division of labor with the other skills
 
 - `preflight` — deterministic verdict: IS the spec ready? Cheap, run it first and often.
