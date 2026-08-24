@@ -1,0 +1,918 @@
+[
+  {
+    "kind": "objective",
+    "text": "Job seekers miss interview slots because calendar invites land in spam and never get re-sent.",
+    "label": "good",
+    "tags": [
+      "named-role",
+      "problem-framing",
+      "plural-actor"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Reduce interview no-shows for job seekers who can't find the meeting link in time.",
+    "label": "good",
+    "tags": [
+      "named-role",
+      "problem-framing",
+      "observable-no-number"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Enable busy parents to finish account onboarding in under 15 minutes without a support call.",
+    "label": "good",
+    "tags": [
+      "named-role",
+      "capability-framing",
+      "implicit-numeric"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Lift first-session profile completion for newly invited Developers so they can run their first build.",
+    "label": "good",
+    "tags": [
+      "implicit-actor",
+      "named-role",
+      "capability-framing"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Give curators a way to bulk-reject low-quality submissions instead of reviewing each one individually.",
+    "label": "good",
+    "tags": [
+      "named-role",
+      "capability-framing"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Let curators reorder a collection and publish it without re-uploading any assets.",
+    "label": "good",
+    "tags": [
+      "plural-actor",
+      "capability-framing",
+      "no-failure-word",
+      "observable-no-number"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Founders abandon the pricing page mid-flow because the per-seat math isn't shown before checkout.",
+    "label": "good",
+    "tags": [
+      "named-role",
+      "problem-framing",
+      "plural-actor"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Founders should be able to see, at a glance, which of their experiments are still pulling traffic.",
+    "label": "good",
+    "tags": [
+      "plural-actor",
+      "capability-framing",
+      "named-role",
+      "observable-no-number"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Let Admins enter a read-only preview mode to inspect a workspace before granting access.",
+    "label": "good",
+    "tags": [
+      "plural-actor",
+      "named-role",
+      "capability-framing"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Jake can't reconcile exported invoices because line items split across pages without subtotals.",
+    "label": "good",
+    "tags": [
+      "named-person",
+      "problem-framing"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Reduce the steps a creator takes to schedule a multi-platform post from seven screens to one.",
+    "label": "good",
+    "tags": [
+      "named-role",
+      "capability-framing",
+      "implicit-actor",
+      "relative-change"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Give first-time job seekers a way to preview how their profile appears to recruiters before they submit.",
+    "label": "good",
+    "tags": [
+      "plural-actor",
+      "capability-framing",
+      "implicit-actor",
+      "no-failure-word"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Make the weekly digest something subscribers act on instead of archive unread.",
+    "label": "good",
+    "tags": [
+      "plural-actor",
+      "problem-framing",
+      "implicit-actor",
+      "no-number"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Make the dashboard better.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "no-actor",
+      "platitude"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Improve the overall onboarding experience so users are happier.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "implicit-actor",
+      "platitude",
+      "no-concrete-change"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Make everything faster and higher quality.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "no-actor",
+      "platitude"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Improve the overall UX of the dashboard.",
+    "label": "vague",
+    "tags": [
+      "implicit-actor",
+      "improve-ux",
+      "genuinely-vague",
+      "no-concrete-change"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Build a world-class search experience.",
+    "label": "vague",
+    "tags": [
+      "platitude",
+      "single-adjective",
+      "genuinely-vague",
+      "no-actor"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Optimize the funnel and drive better outcomes.",
+    "label": "vague",
+    "tags": [
+      "implicit-actor",
+      "make-x-better",
+      "genuinely-vague",
+      "no-concrete-change"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Deliver a best-in-class, seamless experience that delights users at every touchpoint.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "capability-framing",
+      "buzzwords",
+      "fake-precision",
+      "implicit-actor"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Optimize the synergy between our core platform capabilities to maximize holistic value.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "buzzwords",
+      "capability-framing",
+      "no-actor"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Leverage cutting-edge AI to revolutionize how teams unlock their full potential.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "buzzwords",
+      "capability-framing",
+      "plural-actor",
+      "no-concrete-change"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Empower users to seamlessly do more with less friction, end to end.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "buzzwords",
+      "capability-framing",
+      "plural-actor",
+      "no-concrete-change"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Reimagine the next-generation workflow to be smarter, faster, and more delightful.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "buzzwords",
+      "faster",
+      "comparative-no-baseline",
+      "no-actor"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Users can resume a draft spec from any device and land back on the exact field they left.",
+    "label": "good",
+    "tags": [
+      "plural-actor",
+      "observable-no-number",
+      "capability-framing"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Onboarding completion rate reaches 75% within the first session.",
+    "label": "good",
+    "tags": [
+      "numeric",
+      "relative-threshold"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Checkout completion rate reaches 75% on mobile within two weeks of launch.",
+    "label": "good",
+    "tags": [
+      "numeric",
+      "relative-threshold",
+      "observable"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Median time-to-first-spec drops from 9 days to under 3 days.",
+    "label": "good",
+    "tags": [
+      "numeric",
+      "relative-change"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "CSV exports no longer drop rows when the dataset exceeds one page of results.",
+    "label": "good",
+    "tags": [
+      "observable-no-number",
+      "observable-state",
+      "implicit-actor",
+      "no-number"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "The reranker's top-1 accuracy meets or exceeds the published SOTA benchmark on the same eval set.",
+    "label": "good",
+    "tags": [
+      "relative-threshold",
+      "benchmark-comparison",
+      "observable-no-number"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Every newly created product workspace is fully templated with example evidence and one starter intent.",
+    "label": "good",
+    "tags": [
+      "observable-state",
+      "implicit-actor"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Admins can enter a read-only preview mode and exit it without their session being logged out.",
+    "label": "good",
+    "tags": [
+      "observable-no-number",
+      "capability-framing",
+      "named-role",
+      "observable-state"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Weekly active editors grow from 120 to 300 over the quarter.",
+    "label": "good",
+    "tags": [
+      "numeric",
+      "relative-change",
+      "named-role"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Support ticket volume for failed scans falls by at least 40% month over month.",
+    "label": "good",
+    "tags": [
+      "numeric",
+      "relative-change"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "A new teammate can open a shared workspace and see the same intents the owner sees, with no access-request step.",
+    "label": "good",
+    "tags": [
+      "observable-state",
+      "capability-framing",
+      "implicit-actor",
+      "observable-no-number"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Re-running the import after a failed sync produces no duplicate records.",
+    "label": "good",
+    "tags": [
+      "observable-state",
+      "observable-no-number",
+      "implicit-actor",
+      "no-number"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Make the experience better for everyone.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "implicit-actor"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Users are happy and the product feels faster.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "plural-actor"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Improve overall quality across the board.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "The product feels faster and more polished.",
+    "label": "vague",
+    "tags": [
+      "implicit-actor",
+      "single-adjective",
+      "genuinely-vague",
+      "unverifiable"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "High-quality results that meet a high bar.",
+    "label": "vague",
+    "tags": [
+      "platitude",
+      "single-adjective",
+      "genuinely-vague",
+      "no-threshold"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "A best-in-class checkout that customers love.",
+    "label": "vague",
+    "tags": [
+      "plural-actor",
+      "platitude",
+      "genuinely-vague",
+      "unverifiable"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Engagement is meaningfully improved across the board.",
+    "label": "vague",
+    "tags": [
+      "implicit-actor",
+      "improve-x",
+      "genuinely-vague",
+      "no-threshold"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Achieve a world-class, frictionless onboarding flow that feels truly magical.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "buzzwords",
+      "fake-precision",
+      "observable-no-number"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Make the product 100% amazing and delightful for everyone who uses it.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "numeric",
+      "fake-precision",
+      "plural-actor",
+      "meaningless-number"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Build a robust, scalable, enterprise-grade solution that drives engagement.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "buzzwords",
+      "fake-precision",
+      "no-actor"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Increase customer happiness by 200% through a truly intuitive interface.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "numeric",
+      "fake-precision",
+      "relative-threshold",
+      "unmeasurable-baseline"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Deliver a 10x improvement in overall product quality and user satisfaction.",
+    "label": "vague",
+    "tags": [
+      "genuinely-vague",
+      "numeric",
+      "fake-precision",
+      "relative-threshold",
+      "unmeasurable-baseline"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Bulk edit for evidence items",
+    "label": "good",
+    "tags": [
+      "short-noun-phrase"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Bulk edit",
+    "label": "good",
+    "tags": [
+      "short-noun-phrase",
+      "two-words"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Undo send",
+    "label": "good",
+    "tags": [
+      "short-noun-phrase",
+      "two-words"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "CSV export retries",
+    "label": "good",
+    "tags": [
+      "short-noun-phrase"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Preview as new hire mode",
+    "label": "good",
+    "tags": [
+      "exemplar-derived"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Recover gracefully from SSO failures",
+    "label": "good",
+    "tags": [
+      "exemplar-derived"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Increase first-session profile completion from 47% to 75%",
+    "label": "good",
+    "tags": [
+      "exemplar-derived",
+      "numeric"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Rate-limit the public API",
+    "label": "good",
+    "tags": [
+      "short-noun-phrase"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Merge duplicate customer records",
+    "label": "good",
+    "tags": [
+      "short-noun-phrase"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Dark mode for the editor",
+    "label": "good",
+    "tags": [
+      "short-noun-phrase"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "New Intent",
+    "label": "vague",
+    "tags": [
+      "placeholder"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Untitled intent",
+    "label": "vague",
+    "tags": [
+      "placeholder"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "TBD",
+    "label": "vague",
+    "tags": [
+      "placeholder"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Onboarding",
+    "label": "vague",
+    "tags": [
+      "one-word-topic"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Export",
+    "label": "vague",
+    "tags": [
+      "one-word-topic"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "New feature",
+    "label": "vague",
+    "tags": [
+      "generic-filler"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Misc fixes",
+    "label": "vague",
+    "tags": [
+      "generic-filler"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "My intent",
+    "label": "vague",
+    "tags": [
+      "generic-filler"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Various improvements",
+    "label": "vague",
+    "tags": [
+      "generic-filler"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "[Your category] work",
+    "label": "vague",
+    "tags": [
+      "template"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "Preview mode must never send emails or fire webhooks.",
+    "label": "good",
+    "tags": [
+      "prohibition",
+      "exemplar-derived"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "Do not expose identity-provider internals in error messages.",
+    "label": "good",
+    "tags": [
+      "prohibition",
+      "exemplar-derived"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "No PII in client-side logs.",
+    "label": "good",
+    "tags": [
+      "prohibition",
+      "short"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "Response time stays under 200ms at p95.",
+    "label": "good",
+    "tags": [
+      "bound",
+      "numeric"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "Only workspace admins can transfer ownership.",
+    "label": "good",
+    "tags": [
+      "bound"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "Keep the export backward compatible with the v1 CSV columns.",
+    "label": "good",
+    "tags": [
+      "obligation"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "GDPR compliance required for all EU traffic.",
+    "label": "good",
+    "tags": [
+      "obligation"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "Nudge DMs must respect company-specific quiet hours.",
+    "label": "good",
+    "tags": [
+      "obligation",
+      "exemplar-derived"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "Partial profiles must remain queryable by downstream features.",
+    "label": "good",
+    "tags": [
+      "obligation",
+      "exemplar-derived"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "Existing shared links continue to resolve after the URL scheme migration.",
+    "label": "good",
+    "tags": [
+      "long-specific-no-marker"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "be good",
+    "label": "vague",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "fast",
+    "label": "vague",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "secure",
+    "label": "vague",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "high quality",
+    "label": "vague",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "user friendly",
+    "label": "vague",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "clean code",
+    "label": "vague",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "works well",
+    "label": "vague",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "scalable",
+    "label": "vague",
+    "tags": [
+      "adjective"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "Create a preview as an admin and confirm no invite emails are emitted.",
+    "label": "good",
+    "tags": [
+      "runnable",
+      "exemplar-derived"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "Trigger an expired-token failure and confirm the retry path renders.",
+    "label": "good",
+    "tags": [
+      "runnable",
+      "exemplar-derived"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "Run the import twice and confirm no duplicate records are created.",
+    "label": "good",
+    "tags": [
+      "runnable"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "Confirm completion rate rises above 60% across the pilot customers.",
+    "label": "good",
+    "tags": [
+      "runnable",
+      "exemplar-derived"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "Unit test the anchor resolver against the 8-char id fixtures.",
+    "label": "good",
+    "tags": [
+      "runnable"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "Export a 1500-row project and confirm no rows are truncated.",
+    "label": "good",
+    "tags": [
+      "runnable"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "test it",
+    "label": "vague",
+    "tags": [
+      "gesture"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "QA",
+    "label": "vague",
+    "tags": [
+      "gesture"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "works",
+    "label": "vague",
+    "tags": [
+      "gesture"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "manual test",
+    "label": "vague",
+    "tags": [
+      "gesture"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "verify",
+    "label": "vague",
+    "tags": [
+      "gesture"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "TBD",
+    "label": "vague",
+    "tags": [
+      "placeholder"
+    ]
+  }
+]

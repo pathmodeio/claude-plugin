@@ -34,6 +34,32 @@ To sync with a Pathmode workspace (23 tools: evidence queries, intent graph, ver
 | `review-against-intent` | Checking code changes against the intent's outcomes and constraints |
 | `handoff-intent` | Capturing decisions and discoveries at the end of a session |
 
+## The calibration corpus
+
+`/preflight` is deterministic, which means its judgment is only as good as what it was tuned
+against. That tuning set is in this repo, so you can check it rather than take the number on faith.
+
+[`readiness-corpus.json`](./readiness-corpus.json) holds 98 hand-labeled spec fragments, 51 labeled
+`good` and 47 labeled `vague`, spread across the gates: 24 objectives, 24 outcomes, 20 titles,
+18 constraints, 12 verification checks. Each item carries the text, the label, and the tags that
+explain the call:
+
+```json
+{ "kind": "objective",
+  "text": "Make the dashboard better.",
+  "label": "vague",
+  "tags": ["genuinely-vague", "no-actor", "platitude"] }
+```
+
+Two things follow from publishing it. The gates are calibrated heuristics, not natural language
+understanding, and the corpus makes the exact boundary visible instead of arguable in the abstract.
+And if you think a label is wrong, that is a concrete disagreement about a specific line, which is
+worth more to us than a general objection. Open an issue.
+
+Pathmode's CI runs both implementations of the gate, the browser one and the one in the MCP server,
+across this entire corpus and fails on any divergence, so the verdict you get in the terminal is the
+verdict the demo page gives.
+
 ## Already ran `npx @pathmode/mcp-server setup`?
 
 The plugin registers its own `pathmode` MCP server, so remove the older entry from your project `.mcp.json` (or `claude_desktop_config.json`) to avoid a duplicate. Skills previously copied into `.claude/skills/` via `install-skills` can also be deleted — the plugin's copies supersede them.
