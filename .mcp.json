@@ -2,7 +2,7 @@
     "mcpServers": {
         "pathmode": {
             "command": "npx",
-            "args": ["-y", "@pathmode/mcp-server@latest"],
+            "args": ["-y", "@pathmode/mcp-server@1.14.0"],
             "env": {
                 "PATHMODE_API_KEY": "${user_config.api_key}"
             }

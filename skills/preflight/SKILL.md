@@ -9,7 +9,7 @@ Call the `check_intent_readiness` MCP tool (Pathmode). With no arguments it chec
 
 Show the user the verdict block exactly as returned — the blocker strings are the calibrated gate output, do not paraphrase them.
 
-If the verdict fails: repair, one blocker at a time. For each failing gate, ask the user ONE targeted question, and propose your best-guess answer from the spec and the codebase so they can correct rather than compose. Apply the agreed fix to the spec (`intent_save` in local mode), then re-run `check_intent_readiness`. Stop when the verdict passes or the user explicitly accepts a named gap.
+If the verdict fails: repair, one blocker at a time. For each failing gate, ask the user ONE targeted question, and propose your best-guess answer from the spec and the codebase so they can correct rather than compose. Apply the agreed fix to the spec (`intent_save` in local mode), then re-run `check_intent_readiness`. When you read the codebase to propose an answer, keep what you learned: pass it to `intent_save` as `implementationContext` (or `record_implementation_context` in cloud mode) instead of discarding it. It does not affect the verdict, and it saves the implementing agent from rediscovering what you just read. Stop when the verdict passes or the user explicitly accepts a named gap.
 
 If the verdict passes: say so and stop. Do not invent extra requirements beyond the six gates.
 

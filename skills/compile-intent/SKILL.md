@@ -9,6 +9,8 @@ Invoke the `compile-intent` MCP prompt from the @pathmode/mcp-server. This start
 
 For each question you ask, propose your best-guess answer based on the conversation so far. Don't make the user generate from a blank page.
 
+Before the spec is finished, gather implementation context. You are already sitting in the repo, so read it: which files and modules this change lands in, what already exists there, what it would touch, and how it could be verified. Pass it to `intent_save` as `implementationContext` — in both modes. A brand-new spec has no intent id yet, so there is nothing to address a separate call to; `intent_save` carries the context through as part of the save. Use `record_implementation_context` only to update the context on an intent that already exists. It is free text, sub-headings welcome, and it is advisory — it never changes the readiness verdict. Its job is to stop the implementing agent from rediscovering the codebase from scratch, and to catch the case where the thing being specified half-exists already.
+
 When the spec is ready, call the `intent_save` MCP tool to write `intent.md` to the project root.
 
 </what-to-do>
@@ -33,6 +35,9 @@ status: "draft"
 
 ## Objective
 [What needs to change and for whom]
+
+## Implementation Context
+[What the repo actually looks like where this lands — read from the working tree, not guessed]
 
 ## Outcomes
 - [ ] [Observable state change, testable in under 5 minutes]
