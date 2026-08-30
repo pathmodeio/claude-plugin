@@ -1,22 +1,22 @@
 {
-    "name": "pathmode",
-    "displayName": "Pathmode",
-    "version": "0.1.6",
-    "description": "Run a deterministic preflight on your intent before an agent builds: /preflight scores six calibrated gates and names the exact blockers, no model call, no key. Pathmode also interrogates the intent behind a request (compile-intent), writes it to intent.md in your repo, and checks the code that comes back against the outcomes and constraints you agreed to. Free: uses the models you already have access to in Claude Code. Connect a Pathmode workspace to sync intent and evidence across a team.",
-    "author": {
-        "name": "Pathmode",
-        "email": "janne@pathmode.io",
-        "url": "https://pathmode.io"
-    },
-    "homepage": "https://preflight.pathmode.io",
-    "license": "MIT",
-    "userConfig": {
-        "api_key": {
-            "type": "string",
-            "title": "Pathmode API key",
-            "description": "Optional. Leave empty to run in keyless local mode (specs live in intent.md in your repo). To sync with a Pathmode workspace, create a key at https://pathmode.io/settings (starts with pm_live_).",
-            "sensitive": true,
-            "required": false
-        }
+  "name": "pathmode",
+  "displayName": "Pathmode",
+  "version": "0.1.11",
+  "description": "Run a deterministic preflight on your intent before an agent builds: /preflight scores six calibrated gates and names the exact blockers, no model call, no key. Pathmode also interrogates the intent behind a request (compile-intent), writes it to intent.md in your repo, and checks the code that comes back against the outcomes and constraints you agreed to. Free: uses the models you already have access to in Claude Code. Connect a Pathmode workspace to sync intent and evidence across a team.",
+  "author": {
+    "name": "Pathmode",
+    "email": "janne@pathmode.io",
+    "url": "https://pathmode.io"
+  },
+  "homepage": "https://preflight.pathmode.io",
+  "license": "MIT",
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "Pathmode API key",
+      "description": "Optional. Leave empty to run in keyless local mode (specs live in intent.md in your repo). To sync with a Pathmode workspace, create a key at https://pathmode.io/settings (starts with pm_live_).",
+      "sensitive": true,
+      "required": false
     }
+  }
 }

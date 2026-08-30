@@ -11,9 +11,9 @@ The plugin is free. It uses the models you already have access to in Claude Code
 /plugin install pathmode@pathmode
 ```
 
-No API key needed. Keyless installs run in **local mode**: specs live in [`intent.md`](https://intentspec.org/intent-md) in your project, nothing leaves your machine, and 7 local MCP tools are available (including `check_intent_readiness`, the deterministic preflight).
+No API key needed. Keyless installs run in **local mode**: specs live in [`intent.md`](https://intentspec.org/intent-md) in your project, nothing leaves your machine, and 9 local MCP tools are available (including `check_intent_readiness`, the deterministic preflight, and `confirm_intent_dimension` to resolve a gate that read your text but could not confirm it).
 
-To sync with a Pathmode workspace (25 tools: evidence queries, intent graph, verification recording), create an API key at [pathmode.io/settings](https://pathmode.io/settings) and enter it when the plugin prompts for configuration. The key is stored in your OS keychain, never in a config file.
+To sync with a Pathmode workspace (27 tools: evidence queries, intent graph, verification recording), create an API key at [pathmode.io/settings](https://pathmode.io/settings) and enter it when the plugin prompts for configuration. The key is stored in your OS keychain, never in a config file.
 
 ## What's bundled
 
@@ -33,6 +33,13 @@ To sync with a Pathmode workspace (25 tools: evidence queries, intent graph, ver
 | `split-intent-to-issues` | Breaking a spec into paste-ready Linear / Jira / GitHub tickets |
 | `review-against-intent` | Checking code changes against the intent's outcomes and constraints |
 | `handoff-intent` | Capturing decisions and discoveries at the end of a session |
+
+**Session hook** — when a session starts in a repo that has an `intent.md` (root or
+`.pathmode/intents/`), one line of state is added to Claude's context: the intent's title, its
+status, and how far it has drifted from the work (days since it was edited, commits since). That
+is all it does. It reads the file and your git log locally, never sends anything anywhere, works
+without an API key, and stays completely silent in repos with no intent. If you would rather it
+did not run, remove the `SessionStart` entry from `hooks/hooks.json`.
 
 ## The calibration corpus
 
