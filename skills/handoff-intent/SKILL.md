@@ -5,7 +5,7 @@ description: Capture context at the end of an implementation session — decisio
 
 <what-to-do>
 
-Load the active intent. If `PATHMODE_API_KEY` is set, call `get_current_intent` (Pathmode MCP). Otherwise read `intent.md` from the project root.
+Load the active intent. Read `intent.md` from the project root first — the file is bound to this repository, which makes it the authority on what this session was working under. If `PATHMODE_API_KEY` is set and the file's frontmatter carries a cloud id, use that id for team-only calls below. Do not let `get_current_intent` choose the intent for you when a local file exists — "current" is a workspace heuristic, not a repo binding. Only fall back to `get_current_intent` when no local file exists.
 
 Summarize the session in four buckets:
 
@@ -14,7 +14,10 @@ Summarize the session in four buckets:
 - What was discovered that wasn't in the spec (new edge case, hidden constraint, surprising interaction)
 - What's blocked, and on what
 
-For each decision and discovery, call `log_implementation_note` with a self-contained summary. Assume the next reader has none of this conversation's context.
+Persist the handoff according to what actually exists:
+
+- **Cloud id available** — call `log_implementation_note` once with a self-contained summary of the material decisions, discoveries, and blockers. Assume the next reader has none of this conversation's context. The newest 10 notes render into the next agent's execution prompt as "What Previous Sessions Handed Over", so one substantial note preserves continuity without pushing older handoffs out of the window.
+- **Local/keyless only** — do not call `log_implementation_note`; there is no local note store. Fold durable learning into the spec with `intent_save`: settled choices into `decisions`, discovered current behavior into `implementationContext`, and genuine new boundaries into `constraints` or `edgeCases`. Keep transient blockers and the session summary in your response or PR description.
 
 If the work is going out as a pull request, name the intent where the merge can find it: branch `intent/<intent-id>`, or `pathmode:<intent-id>` anywhere in the PR body. Without that reference the merge cannot connect the code to the spec, and the whole delivery loop stays dark.
 

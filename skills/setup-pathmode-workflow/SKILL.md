@@ -31,7 +31,7 @@ When all questions are answered, output a single self-contained block the user c
 - Implementation notes: [convention]
 ```
 
-If `PATHMODE_API_KEY` is set, ALSO call `log_implementation_note` against a workspace-level convention record (the user's current intent if any, otherwise the first intent in the workspace) so other team members and other agents inherit the conventions.
+If `PATHMODE_API_KEY` is set, ALSO call `log_implementation_note` on the user's current intent (if any, otherwise the first intent in the workspace) so the conventions show in the Pathmode audit trail. Be honest about reach: that note rides only that one intent's future prompts — there is no workspace-level convention record yet. `CLAUDE.md` is what every agent session actually inherits, which is why the paste step above is the one that matters.
 
 Do NOT write to a `.pathmode/` directory in the repo. The canonical conventions live in `CLAUDE.md` (visible to every agent session) and in the Pathmode workspace (visible to PMs). The repo is a consumer of intent, not where intent fossilizes.
 
@@ -68,7 +68,7 @@ For each inference, propose it as the best-guess answer ("Looks like you use Lin
 ## Mode behavior
 
 - **Local mode (no API key)** — Output goes to `CLAUDE.md` only. The user paste-edits it themselves. The skill does not write files.
-- **Team mode (`PATHMODE_API_KEY` set)** — Same `CLAUDE.md` output, PLUS a `log_implementation_note` call so the conventions are visible in the Pathmode workspace.
+- **Team mode (`PATHMODE_API_KEY` set)** — Same `CLAUDE.md` output, PLUS a `log_implementation_note` call so the conventions are visible in the Pathmode workspace (on that one intent; `CLAUDE.md` remains the surface every session inherits).
 
 ## What this skill does NOT do
 

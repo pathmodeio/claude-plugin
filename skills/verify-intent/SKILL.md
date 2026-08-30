@@ -5,7 +5,7 @@ description: Design the executable feedback loop for an intent — fastest check
 
 <what-to-do>
 
-Load the active intent. If `PATHMODE_API_KEY` is set, call `get_current_intent`. Otherwise read `intent.md` from the project root.
+Load the active intent from `intent.md` in the project root first. That file is bound to this repository and remains the content authority even when `PATHMODE_API_KEY` is set. Only call `get_current_intent` when no local file exists.
 
 Walk the user through the five verification dimensions below. Ask ONE question at a time. For each question, propose your best-guess answer based on the intent's outcomes and what's visible in the codebase (existing tests, observability hooks, CI config).
 
@@ -17,7 +17,7 @@ The five dimensions:
 4. **Observable shipped signal** — Once deployed, what tells you it's working in production? (metric, log pattern, user behavior change)
 5. **What must not regress** — What existing behavior would a fix here accidentally break? (named cases the user worries about)
 
-For each answer, capture it. In team mode, call `log_implementation_note` with the dimension and answer (e.g., `verification:fastest_check: npm run typecheck`). In local mode, append to the `## Verification` section of `intent.md`.
+Hold the five answers until the loop is complete; do not spend five tool calls logging fragments. Then write them once to the structured `verification.checks` collection: `fastest`, `test` (the highest-confidence check), `manual`, `shipped-signal`, and `regression-guard`. When `intent.md` exists, call `intent_save` with the full updated spec (it writes the file and also syncs in connected mode). Only use `update_intent` when no local file exists. In team mode, add one consolidated `log_implementation_note` only when the session produced rationale or a tradeoff that the structured checks do not carry.
 
 When all five are answered, summarize the loop:
 
@@ -64,8 +64,8 @@ The first version is a wish. The second version is a contract.
 
 ## Mode behavior
 
-- **Team mode** — Each answer becomes a `log_implementation_note` keyed by dimension. When the verification schema lands in the spec model (planned), these notes will migrate to a structured `verification` field. Until then, notes are the durable store.
-- **Local mode** — Answers append to `## Verification` in `intent.md` as a markdown section. Simple, no schema dependency.
+- **Repo-bound intent (local or connected)** — Write all five answers to `verification.checks` with one `intent_save`. The rendered `## Verification` section is the file projection of those structured checks.
+- **Cloud-only intent** — Write all five answers with one `update_intent` call. `log_implementation_note` is for session narrative, not for a field that already exists.
 
 ## Pairing with other skills
 

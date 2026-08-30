@@ -5,7 +5,7 @@ description: Review code changes against the active intent's outcomes and constr
 
 <what-to-do>
 
-Load the active intent. If `PATHMODE_API_KEY` is set, call `get_current_intent` (Pathmode MCP). Otherwise read `intent.md` from the project root.
+Load the active intent. Read `intent.md` from the project root first — the file is bound to this repository, which makes it the authority on what governs this diff. If `PATHMODE_API_KEY` is set and the file's frontmatter carries a cloud id, also fetch that intent's execution bundle (`get_agent_prompt` with the id) to pick up what the file cannot hold: open findings, handoff notes, authorization state. Do not let `get_current_intent` choose the intent for you when a local file exists — "current" is a workspace heuristic, not a repo binding. Only with no local file at all, fall back to `get_current_intent`.
 
 Identify the changed files using git diff against the base branch (or staged changes if no base specified).
 

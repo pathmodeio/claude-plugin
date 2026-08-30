@@ -5,11 +5,11 @@ description: Adversarial review of an existing intent spec. Walk the spec field-
 
 <what-to-do>
 
-Load the active intent. If a `PATHMODE_API_KEY` is set, call `get_current_intent` (Pathmode MCP). Otherwise read `intent.md` from the project root.
+Load the active intent from `intent.md` in the project root first. That file is bound to this repository and remains the content authority even when `PATHMODE_API_KEY` is set. Only call `get_current_intent` when no local file exists. If the file carries a cloud id, use that id for any team-only note call below.
 
 Walk the spec field-by-field — objective, outcomes, edge cases, constraints. For each field, find the weakest claim and pressure-test it. Ask ONE pointed question at a time. For each question, propose your best-guess answer based on the spec and the codebase.
 
-When a weakness is confirmed, edit the spec. In team mode, call `log_implementation_note` to record the change. In local mode, write back to `intent.md`.
+When a weakness is confirmed, edit the spec itself — not a note about it. Write the change back to `intent.md` and save with `intent_save` (it preserves the file's identity and syncs in team mode; use `update_intent` only when no local file exists). Then, in team mode, call `log_implementation_note` to record WHY the change was made: the note reaches the next agent's prompt, the spec carries the change.
 
 Stop when all five dimensions below pass, or the user explicitly accepts a known weakness.
 
@@ -28,7 +28,7 @@ Stop when all five dimensions below pass, or the user explicitly accepts a known
 ## Stop conditions
 
 - All five dimensions pass — the spec is agent-ready
-- The user explicitly accepts a known weakness — record it with `log_implementation_note` so it's visible to future agents
+- The user explicitly accepts a known weakness — record that acceptance as a decision in the spec with `intent_save`; when a cloud id is available, one consolidated `log_implementation_note` may preserve rationale that does not fit the decision field
 - More than 6 turns without surfacing new issues — the spec is settled
 
 ## Difference from compile-intent
