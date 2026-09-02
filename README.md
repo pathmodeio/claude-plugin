@@ -19,7 +19,7 @@ To sync with a Pathmode workspace (30 tools: evidence queries, revision-bound PM
 
 ## What's bundled
 
-**MCP server** — `@pathmode/mcp-server@1.21.0`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
+**MCP server** — `@pathmode/mcp-server@1.22.0`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
 
 **Command** — `/preflight` runs the deterministic six-gate readiness check and always ends in a verdict: on your `intent.md` if one exists, on a spec described in the conversation, or on a provisional draft it builds from context with assumptions marked.
 
@@ -30,6 +30,7 @@ To sync with a Pathmode workspace (30 tools: evidence queries, revision-bound PM
 | `setup-pathmode-workflow` | First-time setup — test commands, issue tracker, status conventions |
 | `compile-intent` | Building a structured spec for what to ship |
 | `preflight` | Deterministic readiness verdict before an agent builds — six gates, exact blockers |
+| `implement-intent` | Implementing the repository intent only after Preflight and required human authorization |
 | `verify-intent` | Designing the executable feedback loop for a spec |
 | `grill-intent` | Stress-testing a spec for weaknesses before code is written |
 | `split-intent-to-issues` | Breaking a spec into paste-ready Linear / Jira / GitHub tickets |
