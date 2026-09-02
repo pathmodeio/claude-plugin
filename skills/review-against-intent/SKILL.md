@@ -5,7 +5,9 @@ description: Review code changes against the active intent's outcomes and constr
 
 <what-to-do>
 
-Load the active intent. Read `intent.md` from the project root first — the file is bound to this repository, which makes it the authority on what governs this diff. If `PATHMODE_API_KEY` is set and the file's frontmatter carries a cloud id, also fetch that intent's execution bundle (`get_agent_prompt` with the id) to pick up what the file cannot hold: open findings, handoff notes, authorization state. Do not let `get_current_intent` choose the intent for you when a local file exists — "current" is a workspace heuristic, not a repo binding. Only with no local file at all, fall back to `get_current_intent`.
+Load the active intent. Read `intent.md` from the project root first — the file is bound to this repository, which makes it the authority on what governs this diff. If `PATHMODE_API_KEY` is set and the file's frontmatter carries a cloud id, also fetch that intent's execution bundle (`get_agent_prompt` with the id) to pick up what the file cannot hold: open PM change requests, findings, handoff notes, and authorization state. Do not let `get_current_intent` choose the intent for you when a local file exists — "current" is a workspace heuristic, not a repo binding. Only with no local file at all, fall back to `get_current_intent`.
+
+If the execution bundle reports an open PM change request, or says the current repository revision is pending, rejected, or stale, stop before reviewing the diff as delivered work. Name the exact request/revision blocker and direct the agent through `preflight`: a requested spec change must be applied with request-bound `intent_save`, then a signed-in product owner must authorize that exact resulting revision. Never approve code against the superseded or unauthorized spec.
 
 Identify the changed files using git diff against the base branch (or staged changes if no base specified).
 

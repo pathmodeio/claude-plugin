@@ -5,7 +5,9 @@ description: Run the deterministic readiness check on an intent spec before an a
 
 <what-to-do>
 
-Call the `check_intent_readiness` MCP tool (Pathmode). With no arguments it prefers `intent.md` in the project root in both local and connected modes; only when that repo-bound file is absent does connected mode fall back to the workspace current intent. Pass `spec` inline to preflight a draft before saving it, or `intentId` when the user deliberately selects a different saved intent.
+Call the `check_intent_readiness` MCP tool (Pathmode). With no arguments it resolves `intent.md` from the MCP client's declared workspace roots or the server launch directory. Connected mode falls back to the workspace current intent only when declared roots are known to contain no repo-bound file; if the repository cannot be identified, it refuses to guess and asks for `intentId` or an inline `spec`. Pass `spec` inline to preflight a draft before saving it, or `intentId` when the user deliberately selects a different saved intent.
+
+In connected mode, when the repo-bound file carries a cloud id, check for PM judgment before implementation: call `list_intent_change_requests` with that id. For every open request, call `get_intent_change_request`, apply the requested field/item change deliberately to `intent.md`, and call `intent_save` with the request's exact `changeRequestId` and `baseRepoBodyRevision`. If the request is unworkable, call `reject_intent_change_request` with a concrete reason instead of pretending it was applied. After an applied request, re-run the readiness check, report that the new repository revision is pending human authorization, and STOP. Do not begin implementation until a later `get_agent_prompt` confirms that the exact current revision is authorized by a signed-in product owner.
 
 Show the user the verdict block exactly as returned — the blocker strings are the calibrated gate output, do not paraphrase them.
 

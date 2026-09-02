@@ -15,11 +15,11 @@ The plugin is free. It uses the models you already have access to in Claude Code
 
 No API key needed. Keyless installs run in **local mode**: specs live in [`intent.md`](https://intentspec.org/intent-md) in your project, nothing leaves your machine, and 9 local MCP tools are available (including `check_intent_readiness`, the deterministic preflight, and `confirm_intent_dimension` to resolve a gate that read your text but could not confirm it).
 
-To sync with a Pathmode workspace (27 tools: evidence queries, intent graph, verification recording), create an API key at [pathmode.io/settings](https://pathmode.io/settings) and enter it when the plugin prompts for configuration. The key is stored in your OS keychain, never in a config file.
+To sync with a Pathmode workspace (30 tools: evidence queries, revision-bound PM requests, intent graph, verification recording), create an API key at [pathmode.io/settings](https://pathmode.io/settings) and enter it when the plugin prompts for configuration. The key is stored in your OS keychain, never in a config file.
 
 ## What's bundled
 
-**MCP server** — `@pathmode/mcp-server` (via npx, always latest), configured automatically. Local mode with no key; cloud mode with one.
+**MCP server** — `@pathmode/mcp-server@1.21.0`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
 
 **Command** — `/preflight` runs the deterministic six-gate readiness check and always ends in a verdict: on your `intent.md` if one exists, on a spec described in the conversation, or on a provisional draft it builds from context with assumptions marked.
 
