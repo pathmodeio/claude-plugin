@@ -19,7 +19,7 @@ To sync with a Pathmode workspace (32 tools: evidence queries, revision-bound PM
 
 ## What's bundled
 
-**MCP server** — `@pathmode/mcp-server@1.25.0`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
+**MCP server** — `@pathmode/mcp-server@1.26.0`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
 
 **Command** — `/preflight` runs the deterministic six-gate readiness check and always ends in a verdict: on your `intent.md` if one exists, on a spec described in the conversation, or on a provisional draft it builds from context with assumptions marked.
 
