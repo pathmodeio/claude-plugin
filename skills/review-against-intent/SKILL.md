@@ -52,3 +52,5 @@ If a change introduces a constraint violation, treat it as a blocker. Be specifi
 When the review finds gaps, the user often wants to record what's not yet done so a future session can pick it up. Call `log_implementation_note` for each significant gap. Make the note self-contained — the next reader won't have this conversation's context.
 
 </supporting-info>
+
+If the diff is right and the spec is wrong (the code satisfies what users need but contradicts an outcome, constraint, or edge case as written), do not approve the diff against the stale text and do not rewrite intent.md yourself. Record the finding with `record_implementation_finding` and propose the exact correction with `propose_spec_change`; a signed-in product owner accepts or rejects it, and only an accepted request may be applied. Say in the review which claim is contradicted and that a proposal is pending.

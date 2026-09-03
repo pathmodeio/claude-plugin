@@ -38,3 +38,7 @@ Create a small implementation plan mapped to the outcomes. Make only the changes
 In connected mode, name the intent where the merge can find it: branch `intent/<intent-id>`, or `pathmode:<intent-id>` in the pull-request body. When a pull request is involved, do not call `update_intent_status`; the merge grades the real diff and owns the transition to Shipped. Without a pull request, mark Shipped only when the outcome is observable.
 
 </supporting-info>
+
+## When building contradicts the spec
+
+Record the contradiction with `record_implementation_finding` the moment you find it. If you can name the exact correction, call `propose_spec_change` with the same finding (`findingId`), the `baseRepoBodyRevision` you read, the target field and item, the value you observed and the value you propose, and the contradiction as the reason. That records a proposal for a signed-in person to accept or reject and stores your observation as unreviewed evidence; it does not change the spec. Keep implementing against the current authorized revision. Never call `intent_save` for your own proposal, and do not re-propose anything listed under "YOUR PENDING PROPOSALS" in the execution bundle.
