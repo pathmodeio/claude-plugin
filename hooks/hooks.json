@@ -11,6 +11,18 @@
                     }
                 ]
             }
+        ],
+        "SubagentStart": [
+            {
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "${CLAUDE_PLUGIN_ROOT}/hooks/session-start.mjs",
+                        "args": [],
+                        "timeout": 5
+                    }
+                ]
+            }
         ]
     }
 }

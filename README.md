@@ -39,10 +39,12 @@ To sync with a Pathmode workspace (32 tools: evidence queries, revision-bound PM
 
 **Session hook** — when a session starts in a repo that has an `intent.md` (root or
 `.pathmode/intents/`), one line of state is added to Claude's context: the intent's title, its
-status, and how far it has drifted from the work (days since it was edited, commits since). That
-is all it does. It reads the file and your git log locally, never sends anything anywhere, works
-without an API key, and stays completely silent in repos with no intent. If you would rather it
-did not run, remove the `SessionStart` entry from `hooks/hooks.json`.
+status, and how far it has drifted from the work (days since it was edited, commits since). The
+same line is given to every subagent Claude delegates to, because a subagent starts from its own
+context and never sees what the parent session was told. That is all it does. It reads the file
+and your git log locally, never sends anything anywhere, works without an API key, and stays
+completely silent in repos with no intent. If you would rather it did not run, remove the
+`SessionStart` and `SubagentStart` entries from `hooks/hooks.json`.
 
 ## The calibration corpus
 

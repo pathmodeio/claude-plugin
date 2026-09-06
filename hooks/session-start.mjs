@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * SessionStart hook: tell the agent, once, that this repo carries an intent.
+ * SessionStart and SubagentStart hook: tell the agent, once, that this repo carries an intent.
  *
  * Experiment E1 (.claude/plans/deterministic-activation.md). The measured friction: a workspace
  * launched the MCP client 33 times in a week against 1 recorded tool call, on a current server.
@@ -20,6 +20,14 @@
  *      MCP round-trip, no readiness computation. Every failure path exits 0 emitting nothing.
  *   4. Works with no API key. Keyless local mode is the surface under promise and the majority of
  *      installs; this must be fully functional there. It never reads a key and never phones home.
+ *
+ * WHY IT ALSO RUNS ON SubagentStart. SessionStart `additionalContext` lands in the parent
+ * conversation, and a subagent starts from its own system prompt plus the task message: it never
+ * sees that line, and it does not see the MCP server's instructions either (measured 2026-09-06: a
+ * general-purpose subagent in this repo saw 33 bare pathmode tool names and no trigger). Every
+ * delegated agent gets the same one line. The output's `hookEventName` is derived from the event
+ * that fired and validated against the two events this script is registered for; a hook that
+ * hard-codes SessionStart and is merely registered twice fails schema validation on the second.
  *
  * NOT A FIFTH PARSER. IntentSpec §2 normalization has four implementations already, held in parity
  * by conformance/normalization-corpus.json (reference normalize.mjs, the validate Action, and both
@@ -133,23 +141,50 @@ function gitStaleness(cwd, absPath) {
     }
 }
 
+/** The two events this script is registered for in hooks.json. Anything else is not ours to answer. */
+export const HOOK_EVENTS = new Set(['SessionStart', 'SubagentStart']);
+
 /**
- * Claude Code pipes the event JSON on stdin, carrying `cwd`. Fall back to the environment and
- * then to the process cwd, because a hook that cannot find the project must still exit clean.
+ * Which event fired, from the stdin payload's `hook_event_name`. Unknown or missing resolves to
+ * SessionStart: that is the original registration, and the parent conversation is where a line
+ * with an uncertain audience does the least harm.
  */
-function projectDir() {
+export function resolveHookEvent(payload) {
+    const name = payload && typeof payload.hook_event_name === 'string' ? payload.hook_event_name : '';
+    return HOOK_EVENTS.has(name) ? name : 'SessionStart';
+}
+
+/** The JSON the hook writes. Exported so the shape is tested, not inferred. */
+export function buildHookOutput(event, line) {
+    return {
+        hookSpecificOutput: {
+            hookEventName: resolveHookEvent({ hook_event_name: event }),
+            additionalContext: line,
+        },
+    };
+}
+
+/**
+ * Claude Code pipes the event JSON on stdin, carrying `cwd` and `hook_event_name`. Fall back to
+ * the environment and then to the process cwd, because a hook that cannot find the project must
+ * still exit clean. Unparseable stdin fails open to the defaults rather than failing the hook.
+ */
+function readHookInput() {
+    let payload = null;
     try {
         const raw = readFileSync(0, 'utf8');
-        const cwd = raw && JSON.parse(raw)?.cwd;
-        if (typeof cwd === 'string' && cwd) return cwd;
+        payload = raw ? JSON.parse(raw) : null;
     } catch {
-        /* no stdin, not JSON, or no `cwd`: fall through */
+        /* no stdin or not JSON: fall through to defaults */
     }
-    return process.env.CLAUDE_PROJECT_DIR || process.cwd();
+    const cwd = typeof payload?.cwd === 'string' && payload.cwd
+        ? payload.cwd
+        : process.env.CLAUDE_PROJECT_DIR || process.cwd();
+    return { cwd, event: resolveHookEvent(payload) };
 }
 
 function main() {
-    const cwd = projectDir();
+    const { cwd, event } = readHookInput();
     const found = findIntentFile(cwd);
     if (!found) return; // Rule 1: silent.
 
@@ -168,12 +203,7 @@ function main() {
     });
     if (!line) return;
 
-    process.stdout.write(JSON.stringify({
-        hookSpecificOutput: {
-            hookEventName: 'SessionStart',
-            additionalContext: line,
-        },
-    }));
+    process.stdout.write(JSON.stringify(buildHookOutput(event, line)));
 }
 
 // Rule 3: any unexpected throw exits 0 and says nothing. A hook is never a reason a session fails.
