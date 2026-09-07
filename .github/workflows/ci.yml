@@ -1,0 +1,42 @@
+name: CI
+
+# Everything here runs from this repository alone. No monorepo checkout, no Pathmode
+# credentials, no secrets. That is the point: the plugin is developed here now.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Test
+        run: npm test
+
+      - name: Validate plugin manifest
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude plugin validate . --strict
+
+      # skills/ is a mirror of packages/mcp-server/skills/ in the Pathmode monorepo. This compares
+      # it against the skills shipped inside the @pathmode/mcp-server version pinned in .mcp.json,
+      # so a hand edit or a forgotten sync fails here rather than shipping.
+      - name: Check skills against the pinned server version
+        run: npm run check:skills

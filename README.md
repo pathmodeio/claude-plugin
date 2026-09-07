@@ -2,7 +2,7 @@
 
 Turn a vague feature idea into a spec your coding agent can build against. One install gives you the [@pathmode/mcp-server](https://www.npmjs.com/package/@pathmode/mcp-server) plus a skill pack for preflighting, compiling, grilling, verifying, and handing off [intent specs](https://intentspec.org/spec).
 
-This repository dogfoods the same workflow: [read its intent.md](intent.md).
+This repository carries its own spec in the same format the plugin produces: [read its intent.md](intent.md). Product decisions about the plugin are made here, in pull requests, and this is where its history will show whether the workflow holds.
 
 The plugin is free. It uses the models you already have access to in Claude Code, so there is nothing to configure and no key to paste. Run `/preflight` (or just ask Claude to run a preflight) for a deterministic verdict on whether your intent is ready for an agent: six calibrated gates, the exact blockers named, the same result every run. No spec yet? `/preflight` drafts a provisional one from your conversation, marks its assumptions, and preflights that — the first run always ends in a verdict. The same gate runs live in your browser at [preflight.pathmode.io](https://preflight.pathmode.io).
 
@@ -19,7 +19,7 @@ To sync with a Pathmode workspace (32 tools: evidence queries, revision-bound PM
 
 ## What's bundled
 
-**MCP server** — `@pathmode/mcp-server@1.26.0`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
+**MCP server** — `@pathmode/mcp-server@1.26.2`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
 
 **Command** — `/preflight` runs the deterministic six-gate readiness check and always ends in a verdict: on your `intent.md` if one exists, on a spec described in the conversation, or on a provisional draft it builds from context with assumptions marked.
 
@@ -49,7 +49,8 @@ completely silent in repos with no intent. If you would rather it did not run, r
 ## The calibration corpus
 
 `/preflight` is deterministic, which means its judgment is only as good as what it was tuned
-against. That tuning set is in this repo, so you can check it rather than take the number on faith.
+against. That tuning set is in this repo, mirrored from the monorepo that owns it, so you can check
+it rather than take the number on faith.
 
 [`readiness-corpus.json`](./readiness-corpus.json) holds 98 hand-labeled spec fragments, 51 labeled
 `good` and 47 labeled `vague`, spread across the gates: 24 objectives, 24 outcomes, 20 titles,
@@ -76,9 +77,39 @@ verdict the demo page gives.
 
 The plugin registers its own `pathmode` MCP server, so remove the older entry from your project `.mcp.json` (or `claude_desktop_config.json`) to avoid a duplicate. Skills previously copied into `.claude/skills/` via `install-skills` can also be deleted — the plugin's copies supersede them.
 
-## Maintainer notes (monorepo)
+## Developing
 
-- `skills/` is a synced copy of `packages/mcp-server/skills/` — edit there, then run `node scripts/sync-skills.mjs`. Never edit the copies. `commands/` is plugin-native and hand-authored here (sync-skills does not touch it); keep `/preflight` aligned with the `preflight` skill's invariants.
-- Validate before release: `claude plugin validate packages/claude-plugin --strict`
-- Distribution: this directory is published as the public `pathmodeio/claude-plugin` repo (plugin and marketplace in one, `source: "./"`). Bump `version` in `.claude-plugin/plugin.json` on every release — installed plugins auto-update.
-- The server reads the key from `PATHMODE_API_KEY`, injected from the keychain-backed `${user_config.api_key}`. Blank or unsubstituted values fall through to keyless local mode (guarded in the server's `loadConfig`).
+Everything runs from this repository. Nothing here needs the Pathmode monorepo, an account, or a key.
+
+```
+git clone https://github.com/pathmodeio/claude-plugin
+cd claude-plugin
+npm ci
+npm test                # the session hook's tests
+npm run validate        # claude plugin validate . --strict
+npm run check:skills    # skills/ against the pinned server version
+```
+
+`hooks/` and `commands/` are authored here. Change them, add a test, open a pull request. CI runs
+the three commands above on every pull request.
+
+**Releasing.** Bump `version` in `.claude-plugin/plugin.json`, merge, and tag. Installed plugins
+auto-update. There is no publish step and no monorepo step.
+
+**What is mirrored, and why you should not edit it here.** `skills/` and `readiness-corpus.json`
+are copies. They are owned by the Pathmode monorepo, where `skills/` is the source the MCP server
+itself ships and the corpus is what Pathmode's cross-implementation parity tests run against. They
+arrive here only through pull requests titled `sync(skills):`. A hand edit to `skills/` fails CI:
+`npm run check:skills` compares every skill against the skills inside the exact
+`@pathmode/mcp-server` version pinned in [`.mcp.json`](.mcp.json), so a copy that has drifted from
+the server the plugin actually launches is caught before it ships. The corpus has no equivalent
+automatic check, because the server package does not ship it; treat it as read-only and report
+problems as issues.
+
+Because the check compares against the pinned version, a skill change reaches this repo only after
+a server release carrying it has been published and pinned. That ordering is deliberate: the skills
+you get and the tools they call are always from the same server build.
+
+**Configuration.** The server reads the key from `PATHMODE_API_KEY`, injected from the
+keychain-backed `${user_config.api_key}`. Blank or unsubstituted values fall through to keyless
+local mode (guarded in the server's `loadConfig`).
