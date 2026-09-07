@@ -19,11 +19,13 @@ Stop when all five dimensions below pass, or the user explicitly accepts a known
 
 ## The five dimensions
 
-1. **Objective** — Does it name who is harmed? Is it specific enough to disqualify other interpretations?
+1. **Objective** — Does it name who is harmed? Is it specific enough to disqualify other interpretations? Is it a problem, or a solution in disguise? ("Add a dropdown" is a solution; "members cannot switch products without leaving their work" is a problem.)
 2. **Outcomes** — Are they observable state changes, not activities? Could someone verify this in 5 minutes without asking the spec author?
 3. **Edge cases** — Are they real edge cases, or restatements of the outcome failing?
 4. **Constraints** — What must NEVER happen? An intent with zero constraints has no teeth.
 5. **Contradictions** — Do any two fields imply opposite things?
+
+Alongside the five, check scope. More than about seven outcomes usually means several intents; split before building. One outcome and no edge cases is usually a task, not an intent.
 
 ## Stop conditions
 
