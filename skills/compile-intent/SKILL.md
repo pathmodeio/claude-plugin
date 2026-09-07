@@ -51,6 +51,10 @@ status: "draft"
 
 If `PATHMODE_API_KEY` is set, the spec also syncs to the user's Pathmode workspace and becomes visible to other team members and other agents.
 
+## Evidence in a file that lives in git
+
+`intent.md` is committed, so everyone who clones the repo can read it forever and deleting a line later does not remove it from history. Under the IntentSpec repo-safe profile the file must not carry raw customer quotes, names or contact details of individuals, support transcripts, confidential internal metrics, or credentials. Cite evidence as a summary or a reference instead: a ticket id, a dashboard name, a one-line paraphrase. Full evidence with quotes and attribution belongs in the private system of record (a connected Pathmode workspace), and the repo file points back at it. A claim with no evidence yet is labelled an assumption, not dressed as a fact.
+
 ## Downstream skills
 
 After compiling, these skills consume the spec:
