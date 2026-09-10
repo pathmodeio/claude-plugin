@@ -1,0 +1,77 @@
+[
+  {
+    "name": "bullets baseline",
+    "file": "bullets-baseline.md",
+    "why": "Every dimension as a bullet list. The shape that has always worked, here so a regression in the shapes below cannot hide behind a green run.",
+    "provenance": "baseline, no defect",
+    "expect": {
+      "goal": "pass",
+      "objective": "pass",
+      "outcomes": "pass",
+      "constraints": "pass",
+      "edgeCases": "pass",
+      "verification": "pass"
+    }
+  },
+  {
+    "name": "prose sections are content, not absence",
+    "file": "prose-sections.md",
+    "why": "The same content as paragraphs instead of bullets. The parser used to filter section lines to list items before any gate saw them, so every one of these read as absent and the blocker copy told the author to write what they had already written.",
+    "provenance": "shipped in @pathmode/mcp-server <= 1.26.3, fixed in 1.27.0",
+    "expect": {
+      "goal": "pass",
+      "objective": "pass",
+      "outcomes": "pass",
+      "constraints": "pass",
+      "edgeCases": "pass",
+      "verification": "pass"
+    }
+  },
+  {
+    "name": "italic text the author wrote is content",
+    "file": "italic-constraint.md",
+    "why": "A real constraint in italics. An early version of the prose fix excluded every wholly emphasized line as a caption, which erased this and reported the section absent: the same accusation in a new shape. Emphasis is not what makes a caption.",
+    "provenance": "never released; introduced and fixed between monorepo commits f4cd3405 and e9568127",
+    "expect": { "constraints": "pass" }
+  },
+  {
+    "name": "a subsection heading is not a verification check",
+    "file": "subheading-only-verification.md",
+    "why": "Section splitting only opens a section on '## ', so a '### ' line falls through as a body line. Once prose counted, the HEADING became a manual check and a spec with no verification in it at all scored 6/6.",
+    "provenance": "never released; introduced and fixed between monorepo commits f4cd3405 and e9568127",
+    "expect": { "verification": "absent" }
+  },
+  {
+    "name": "a hard-wrapped bullet is one item",
+    "file": "wrapped-bullet-unindented.md",
+    "why": "Markdown lazy continuation does not require indentation. Requiring it split one bullet into two outcomes, which cleared the two-outcome minimum, so wrapping alone manufactured a passing gate. One outcome must stay one outcome and fail on the count.",
+    "provenance": "never released; introduced and fixed between monorepo commits f4cd3405 and e9568127",
+    "expect": { "outcomes": "unconfirmed" }
+  },
+  {
+    "name": "a generated caption is not a check",
+    "file": "generated-caption.md",
+    "why": "Pathmode's own serializer writes this line under Verification. Read as prose it became a check, so a spec gained a check on every round trip and a draft placeholder could pass the gate it was reporting as failed.",
+    "provenance": "never released; introduced and fixed between monorepo commits f4cd3405 and e9568127",
+    "expect": { "verification": "absent" }
+  },
+  {
+    "name": "empty headings are still empty",
+    "file": "empty-headings.md",
+    "why": "The other half of the prose fix, and the one it would be easy to break while fixing the first. Headings with nothing under them must stay absent: preserving prose must not turn an empty section into content.",
+    "provenance": "guard against over-correcting the 1.27.0 fix",
+    "expect": {
+      "outcomes": "absent",
+      "constraints": "absent",
+      "edgeCases": "absent",
+      "verification": "absent"
+    }
+  },
+  {
+    "name": "non-English is unconfirmed, never absent",
+    "file": "non-english-prose.md",
+    "why": "The gates match a fixed English vocabulary, so they cannot confirm this objective or constraint. That is a limit of the gate, and the verdict has to say so: 'unconfirmed' means it read the text and its word lists could not confirm it, which is different from claiming nothing was written. An audit of real specs found this class of failure is usually ours, not the author's.",
+    "provenance": "the known limitation the four-state verdict exists to report honestly",
+    "expect": { "objective": "unconfirmed", "constraints": "unconfirmed" }
+  }
+]

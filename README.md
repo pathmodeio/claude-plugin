@@ -21,6 +21,8 @@ To sync with a Pathmode workspace (32 tools: evidence queries, revision-bound PM
 
 **MCP server** — `@pathmode/mcp-server@1.27.0`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
 
+**Check the gate yourself** — `node scripts/readiness-suite.mjs` runs the pinned server's preflight over 98 labelled field fixtures and a set of whole `intent.md` documents, and prints where it disagrees. Read [CALIBRATION.md](CALIBRATION.md) first: the field score is a regression baseline, not an accuracy claim.
+
 **Command** — `/preflight` runs the deterministic six-gate readiness check and always ends in a verdict: on your `intent.md` if one exists, on a spec described in the conversation, or on a provisional draft it builds from context with assumptions marked.
 
 **Skills** — auto-trigger from what you ask Claude, in rough lifecycle order:
