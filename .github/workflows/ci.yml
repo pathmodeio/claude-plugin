@@ -40,3 +40,10 @@ jobs:
       # so a hand edit or a forgotten sync fails here rather than shipping.
       - name: Check skills against the pinned server version
         run: npm run check:skills
+
+      - name: Readiness calibration and regression suite
+        # Grades the pinned server through MCP: field-label agreement against
+        # readiness-corpus.json, and whole-document behaviour against fixtures/documents.json.
+        # The document half is the one that catches a parsing regression; the field half scored
+        # 1.000 on both sides of the 1.27.0 fix and could not see it. See CALIBRATION.md.
+        run: npm run readiness:suite
