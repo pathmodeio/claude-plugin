@@ -504,6 +504,145 @@
     ]
   },
   {
+    "kind": "outcome",
+    "text": "Count of parser implementations found repository-wide (target: exactly one).",
+    "label": "good",
+    "tags": [
+      "word-number",
+      "stated-target",
+      "exact-count",
+      "spark-teardown-2026-09-15"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Number of orphaned intents found in storage (target: zero new occurrences after enforcement ships).",
+    "label": "good",
+    "tags": [
+      "word-number",
+      "stated-target",
+      "zero-count",
+      "spark-teardown-2026-09-15"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "The fork-detection check catches all three injected forks on every drill run.",
+    "label": "good",
+    "tags": [
+      "word-number",
+      "quantifier",
+      "all-n",
+      "spark-teardown-2026-09-15"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Nightly reconciliation leaves zero unmatched records in the ledger.",
+    "label": "good",
+    "tags": [
+      "word-number",
+      "bare-zero",
+      "no-digit"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Open critical incidents attributable to the migration (target: none).",
+    "label": "good",
+    "tags": [
+      "word-number",
+      "stated-target",
+      "none-as-target"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Each release ships with at most two manual QA sign-offs.",
+    "label": "good",
+    "tags": [
+      "word-number",
+      "quantifier",
+      "at-most"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Only one live copy of the pricing table remains after the merge.",
+    "label": "good",
+    "tags": [
+      "word-number",
+      "quantifier",
+      "only-one"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "One day every team will trust the roadmap again.",
+    "label": "vague",
+    "tags": [
+      "word-number-trap",
+      "idiom-one-day",
+      "genuinely-vague",
+      "no-threshold"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "No one on the team is confused about ownership anymore.",
+    "label": "vague",
+    "tags": [
+      "word-number-trap",
+      "pronoun-no-one",
+      "genuinely-vague",
+      "unverifiable"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "The new dashboard becomes one of the most used pages in the product.",
+    "label": "vague",
+    "tags": [
+      "word-number-trap",
+      "one-of-the",
+      "genuinely-vague",
+      "no-threshold"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Teams pick one of the two onboarding paths and feel more confident about the setup.",
+    "label": "vague",
+    "tags": [
+      "word-number-trap",
+      "one-of-the",
+      "bare-count-not-threshold",
+      "genuinely-vague"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Zero-config setup that just works for everyone.",
+    "label": "vague",
+    "tags": [
+      "word-number-trap",
+      "hyphenated-zero",
+      "genuinely-vague",
+      "no-threshold"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "The migration targets one region first and expands from there.",
+    "label": "vague",
+    "tags": [
+      "word-number-trap",
+      "targets-verb",
+      "genuinely-vague",
+      "no-threshold"
+    ]
+  },
+  {
     "kind": "title",
     "text": "Bulk edit for evidence items",
     "label": "good",
