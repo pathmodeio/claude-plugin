@@ -23,7 +23,7 @@ Three things get confused here, and they are not the same claim:
 3. **Whether the spec describes the right product decision.** **Nothing here measures this**, and
    no corpus of this shape could. A spec can score 6/6 and be a bad idea, clearly stated.
 
-Part A is a **regression baseline, not independent validation.** These 98 fixtures were written
+Part A is a **regression baseline, not independent validation.** These 111 fixtures were written
 alongside the rules they score, and the rules were tuned until they agreed. A high score is
 therefore evidence that the gate still behaves as it did when it was calibrated. It is not
 evidence that the gate generalizes. Independently collected, previously unseen specs would be
@@ -107,7 +107,7 @@ nothing was written.
 
 - The gates match a **fixed English vocabulary**. A non-English objective cannot be confirmed, and
   reports as `unconfirmed`. Part B has a Finnish case that holds this behaviour honest.
-- 98 fixtures is small, and they are **our own authored examples**, not sampled from real repos.
+- 111 fixtures is small, and they are **our own authored examples**, not sampled from real repos.
 - The gates judge **phrasing**, not correctness, novelty, feasibility, or whether the decision is
   a good one.
 - Part A cannot detect a document-parsing regression, as shown above.
