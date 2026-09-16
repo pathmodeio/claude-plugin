@@ -19,7 +19,7 @@ To sync with a Pathmode workspace (33 tools: evidence queries, revision-bound PM
 
 ## What's bundled
 
-**MCP server** — `@pathmode/mcp-server@1.29.0`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
+**MCP server** — `@pathmode/mcp-server@1.30.0`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
 
 **Check the gate yourself** — `node scripts/readiness-suite.mjs` runs the pinned server's preflight over 111 labelled field fixtures and a set of whole `intent.md` documents, and prints where it disagrees. Read [CALIBRATION.md](CALIBRATION.md) first: the field score is a regression baseline, not an accuracy claim.
 
