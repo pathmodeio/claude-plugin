@@ -34,6 +34,8 @@ The gate is pure functions over the spec text: no model call, no network. Re-run
 
 Every `intent_save` also stamps the verdict into the file's frontmatter as `readiness:` ("passed 6/6", or "failed N/6" with the blocking gates named), so anyone reading intent.md — human or agent — sees the gate state without re-running anything. A failing verdict never blocks the save; the gate reports, the user decides.
 
+A saved intent can also carry product choices its brief proposed and no human has resolved. Those are not one of the six checks: the verdict reports them separately ("⛔ Not ready to hand to an agent: N product choices still unresolved"), the frontmatter appends "— blocked by N unresolved product choice(s)", and `get_agent_prompt` in execute mode says do not implement. A recommendation attached to an open choice is an assumption. Ask the product owner to resolve or explicitly exclude it in Pathmode; do not resolve it from the repository.
+
 ## Division of labor with the other skills
 
 - `preflight` — deterministic verdict: IS the spec ready? Cheap, run it first and often.
