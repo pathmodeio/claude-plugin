@@ -1,11 +1,11 @@
 ---
 name: compile-intent
-description: Build a structured intent spec through Socratic conversation. Use when the user wants to define what to build, sharpen a vague idea into a testable spec, or capture product intent before writing code. Compiles to intent.md in the project root and (if an API key is set) syncs to a Pathmode workspace.
+description: Build a structured intent spec through guided conversation, one decision at a time with a recommended answer for each. Use when the user wants to define what to build, sharpen a vague idea into a testable spec, or capture product intent before writing code. Writes intent.md in the project root and (if an API key is set) syncs to a Pathmode workspace.
 ---
 
 <what-to-do>
 
-Invoke the `compile-intent` MCP prompt from the @pathmode/mcp-server. This starts a Socratic conversation that turns a vague problem into a structured intent spec.
+Invoke the `compile-intent` MCP prompt from the @pathmode/mcp-server. This starts a guided conversation that turns a vague problem into a structured intent spec.
 
 For each question you ask, propose your best-guess answer based on the conversation so far. Don't make the user generate from a blank page.
 
@@ -19,7 +19,7 @@ For a new choice-bearing proposal, call `intent_save(localDraft: true)` to write
 
 <supporting-info>
 
-## Why Socratic, not template
+## Why a conversation, not a template
 
 The compile-intent prompt is interrogative on purpose. It pushes back on vague language, challenges unmeasurable outcomes, and forces concrete constraints before moving on. Specs written in one shot tend to be wishful; specs that survive grilling are agent-ready.
 
@@ -61,7 +61,7 @@ If `PATHMODE_API_KEY` is set, the spec also syncs to the user's Pathmode workspa
 
 After compiling, these skills consume the spec:
 
-- `grill-intent` — re-enter the Socratic loop to find weaknesses before code gets written
+- `grill-intent` — re-enter the conversation to find weaknesses before code gets written
 - `review-against-intent` — check code changes against outcomes and constraints
 - `handoff-intent` — capture decisions and discoveries back to the spec at end of session
 
