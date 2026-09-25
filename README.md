@@ -39,9 +39,11 @@ To sync with a Pathmode workspace (33 tools: evidence queries, revision-bound PM
 | `review-against-intent` | Checking code changes against the intent's outcomes and constraints |
 | `handoff-intent` | Capturing decisions and discoveries at the end of a session |
 
-**Session hook** — when a session starts in a repo that has an `intent.md` (root or
-`.pathmode/intents/`), one line of state is added to Claude's context: the intent's title, its
-status, and how far it has drifted from the work (days since it was edited, commits since). The
+**Session hook** — when a session starts in a repo that has an `intent.md` (at the root, in an
+`intent/` folder as Anthropic's AI-native SDLC playbook lays it out, or in `.pathmode/intents/`),
+one line of state is added to Claude's context: the intent's title, its status, and how far it
+has drifted from the work (days since it was edited, commits since). When `intent/` holds several,
+the line names them and picks none. The
 same line is given to every subagent Claude delegates to, because a subagent starts from its own
 context and never sees what the parent session was told. That is all it does. It reads the file
 and your git log locally, never sends anything anywhere, works without an API key, and stays

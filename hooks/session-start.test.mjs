@@ -16,6 +16,7 @@ import {
     formatStateLine,
     describeStaleness,
     findIntentFile,
+    formatSeveralLine,
     resolveHookEvent,
     buildHookOutput,
     HOOK_EVENTS,
@@ -158,6 +159,43 @@ describe('findIntentFile', () => {
         expect(findIntentFile(dir)?.rel).toBe('intent.md');
     });
 
+    // Anthropic's AI-native SDLC playbook keeps intent.md in intent/, with spec.md beside it.
+    it('finds intent/<feature>/intent.md and never takes spec.md for it', () => {
+        mkdirSync(path.join(dir, 'intent', 'shipment'), { recursive: true });
+        writeFileSync(path.join(dir, 'intent', 'shipment', 'spec.md'), INTENT);
+        writeFileSync(path.join(dir, 'intent', 'shipment', 'intent.md'), INTENT);
+        expect(findIntentFile(dir)?.rel).toBe(path.join('intent', 'shipment', 'intent.md'));
+    });
+
+    it('finds intent/intent.md', () => {
+        mkdirSync(path.join(dir, 'intent'));
+        writeFileSync(path.join(dir, 'intent', 'intent.md'), INTENT);
+        expect(findIntentFile(dir)?.rel).toBe(path.join('intent', 'intent.md'));
+    });
+
+    it('prefers the root file over intent/', () => {
+        mkdirSync(path.join(dir, 'intent'));
+        writeFileSync(path.join(dir, 'intent', 'intent.md'), INTENT);
+        writeFileSync(path.join(dir, 'intent.md'), INTENT);
+        expect(findIntentFile(dir)?.rel).toBe('intent.md');
+    });
+
+    it('reports several intent/ features instead of picking one', () => {
+        for (const feature of ['returns', 'checkout']) {
+            mkdirSync(path.join(dir, 'intent', feature), { recursive: true });
+            writeFileSync(path.join(dir, 'intent', feature, 'intent.md'), INTENT);
+        }
+        expect(findIntentFile(dir)).toEqual({
+            several: [path.join('intent', 'checkout', 'intent.md'), path.join('intent', 'returns', 'intent.md')],
+        });
+    });
+
+    it('stays silent for an intent/ folder with no file named intent.md', () => {
+        mkdirSync(path.join(dir, 'intent'));
+        writeFileSync(path.join(dir, 'intent', 'shipment.md'), INTENT);
+        expect(findIntentFile(dir)).toBeNull();
+    });
+
     it('ignores non-markdown files in the intents directory', () => {
         mkdirSync(path.join(dir, '.pathmode', 'intents'), { recursive: true });
         writeFileSync(path.join(dir, '.pathmode', 'intents', 'notes.txt'), 'x');
@@ -223,6 +261,26 @@ describe('the hook as a process', () => {
             expect(out.hookSpecificOutput.hookEventName).toBe('SubagentStart');
             expect(out.hookSpecificOutput.additionalContext).toContain('intent.md');
         }
+    });
+
+    it('emits the one line for an Anthropic-format intent/<feature>/intent.md with no frontmatter', () => {
+        mkdirSync(path.join(dir, 'intent', 'shipment'), { recursive: true });
+        writeFileSync(path.join(dir, 'intent', 'shipment', 'intent.md'),
+            '# Intent: shipment status self-service\nAuthor: Sam. Status: draft.\n## Problem\nCustomers phone support.');
+        const line = runHook(JSON.stringify({ hook_event_name: 'SessionStart', cwd: dir })).hookSpecificOutput.additionalContext;
+        expect(line).toContain(path.join('intent', 'shipment', 'intent.md'));
+        expect(line).toContain('"Intent: shipment status self-service"');
+    });
+
+    it('emits one line naming several intent/ features, and chooses none of them', () => {
+        for (const feature of ['checkout', 'returns']) {
+            mkdirSync(path.join(dir, 'intent', feature), { recursive: true });
+            writeFileSync(path.join(dir, 'intent', feature, 'intent.md'), INTENT);
+        }
+        const line = runHook(JSON.stringify({ hook_event_name: 'SessionStart', cwd: dir })).hookSpecificOutput.additionalContext;
+        expect(line).toBe(formatSeveralLine([path.join('intent', 'checkout', 'intent.md'), path.join('intent', 'returns', 'intent.md')]));
+        expect(line).not.toContain('\n');
+        expect(line).not.toContain('Cut checkout latency');
     });
 
     it('stays one line: it never pastes the intent body into a subagent', () => {
