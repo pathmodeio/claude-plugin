@@ -44,7 +44,10 @@ runs the same gate in a terminal or in CI. All three grade with the same code.
 title, an objective with an actor and a concrete problem, observable outcomes, a hard constraint,
 an edge case with its expected behavior, and a runnable check. A pass says the spec is complete
 enough to build from. It cannot say the decision is right, and an open product choice still blocks
-it, because a recommendation is an assumption until a person decides. Schema validation (the
+it, because a recommendation is an assumption until a person decides. Without a workspace, Claude
+records each explicit answer you give with `answer_product_choice`: your words for that choice, the
+claims it adds written into the spec, marked answered locally (unverified). That is a faithful record
+of the conversation, not verified approval; nobody else has seen or signed it. Schema validation (the
 [IntentSpec Action](https://github.com/pathmodeio/validate-intentspec-action)) checks only
 structure, and whether the outcomes happened is for verification after the build.
 
@@ -55,7 +58,7 @@ structure, and whether the outcomes happened is for verification after the build
 /plugin install pathmode@pathmode
 ```
 
-No API key needed. Keyless installs run in **local mode**: specs live in [`intent.md`](https://intentspec.org/intent-md) in your project, nothing leaves your machine, and 9 local MCP tools are available (including `check_intent_readiness`, the deterministic preflight, and `confirm_intent_dimension` to resolve a gate that read your text but could not confirm it).
+No API key needed. Keyless installs run in **local mode**: specs live in [`intent.md`](https://intentspec.org/intent-md) in your project, nothing leaves your machine, and 10 local MCP tools are available (including `check_intent_readiness`, the deterministic preflight, `confirm_intent_dimension` to resolve a gate that read your text but could not confirm it, and `answer_product_choice` to record a person's explicit answer to an open product choice).
 
 To sync with a Pathmode workspace (33 tools: evidence queries, revision-bound PM requests, agent-proposed corrections, intent graph, verification recording), create an API key at [pathmode.io/settings](https://pathmode.io/settings) and enter it when the plugin prompts for configuration. The key is stored in your OS keychain, never in a config file.
 
