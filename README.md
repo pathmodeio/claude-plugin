@@ -4,7 +4,7 @@ Turn a vague feature idea into a spec your coding agent can build against. One i
 
 This repository carries its own spec in the same format the plugin produces: [read its intent.md](intent.md). Product decisions about the plugin are made here, in pull requests, and this is where its history will show whether the workflow holds.
 
-The plugin is free. It uses the models you already have access to in Claude Code, so there is nothing to configure and no key to paste. Run `/preflight` (or just ask Claude to run a preflight) for a deterministic verdict on whether your intent is ready for an agent: six calibrated gates, the exact blockers named, the same result every run. No spec yet? `/preflight` drafts a provisional one from your conversation, marks its assumptions, and preflights that — the first run always ends in a verdict. The six checks also run live in your browser at [preflight.pathmode.io](https://preflight.pathmode.io), with one gap for now: the browser does not yet read product choices, so a spec with open choices can read ready there while `/preflight` blocks it. Until they agree, trust the terminal verdict.
+The plugin is free. It uses the models you already have access to in Claude Code, so there is nothing to configure and no key to paste. Run `/preflight` (or just ask Claude to run a preflight) for a deterministic verdict on whether your intent is ready for an agent: six calibrated gates, the exact blockers named, the same result every run. No spec yet? `/preflight` drafts a provisional one from your conversation, marks its assumptions, and preflights that — the first run always ends in a verdict. The same gate, product choices included, runs live in your browser at [preflight.pathmode.io](https://preflight.pathmode.io).
 
 ## See it work
 
@@ -117,7 +117,8 @@ worth more to us than a general objection. Open an issue.
 
 Pathmode's CI runs both implementations of the gate, the browser one and the one in the MCP server,
 across this entire corpus and fails on any divergence, so on these six checks the terminal and the demo
-page agree. Product choices are not in the corpus, and the browser does not read them yet (see above).
+page agree. Product choices are not in the corpus; the browser and the terminal read them with the same
+shared code, and Pathmode's tests hold both to the same verdict on the same files.
 
 ## Already ran `npx @pathmode/mcp-server setup`?
 
