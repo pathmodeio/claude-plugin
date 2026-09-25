@@ -104,10 +104,45 @@ export function describeStaleness(commitsSince, daysSince) {
     return parts.length ? `Last ${parts.join(', ')}.` : '';
 }
 
-/** Root intent.md first, then .pathmode/intents/*.md — mirrors readLocalIntents() ordering. */
+/**
+ * Every file named exactly intent.md in `<cwd>/intent/` or one folder below it, sorted, as
+ * relative paths. Anthropic's AI-native SDLC playbook keeps intent.md there, with spec.md and
+ * plan.md beside it, so no other name counts. Mirrors intent-file-location.ts in the MCP server.
+ */
+export function findIntentFolderFiles(cwd) {
+    const found = [];
+    const visit = (rel, depth) => {
+        let entries;
+        try {
+            entries = readdirSync(path.join(cwd, rel), { withFileTypes: true });
+        } catch {
+            return;
+        }
+        for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
+            if (entry.name.startsWith('.')) continue;
+            const child = path.join(rel, entry.name);
+            if (entry.isDirectory()) {
+                if (depth === 0) visit(child, 1);
+            } else if (entry.name === 'intent.md') {
+                found.push(child);
+            }
+        }
+    };
+    visit('intent', 0);
+    return found;
+}
+
+/**
+ * Root intent.md first, then the one in intent/, then .pathmode/intents/*.md — the order the MCP
+ * server resolves them in. Several intents in intent/ are reported as `several`, never picked
+ * between: the server refuses to choose one by folder order, and so does this line.
+ */
 export function findIntentFile(cwd) {
     const root = path.join(cwd, 'intent.md');
     if (existsSync(root)) return { abs: root, rel: 'intent.md' };
+    const inFolder = findIntentFolderFiles(cwd);
+    if (inFolder.length === 1) return { abs: path.join(cwd, inFolder[0]), rel: inFolder[0] };
+    if (inFolder.length > 1) return { several: inFolder };
     const dir = path.join(cwd, '.pathmode', 'intents');
     if (!existsSync(dir)) return null;
     try {
@@ -183,10 +218,19 @@ function readHookInput() {
     return { cwd, event: resolveHookEvent(payload) };
 }
 
+/** The one line for a repository that keeps several intents in intent/. State, not a choice. */
+export function formatSeveralLine(relPaths) {
+    return `Pathmode: this repo carries ${relPaths.length} intents in intent/ — ${relPaths.join(', ')}.`;
+}
+
 function main() {
     const { cwd, event } = readHookInput();
     const found = findIntentFile(cwd);
     if (!found) return; // Rule 1: silent.
+    if (found.several) {
+        process.stdout.write(JSON.stringify(buildHookOutput(event, formatSeveralLine(found.several))));
+        return;
+    }
 
     let content;
     try {
