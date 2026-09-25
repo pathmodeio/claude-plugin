@@ -6,6 +6,48 @@ This repository carries its own spec in the same format the plugin produces: [re
 
 The plugin is free. It uses the models you already have access to in Claude Code, so there is nothing to configure and no key to paste. Run `/preflight` (or just ask Claude to run a preflight) for a deterministic verdict on whether your intent is ready for an agent: six calibrated gates, the exact blockers named, the same result every run. No spec yet? `/preflight` drafts a provisional one from your conversation, marks its assumptions, and preflights that — the first run always ends in a verdict. The same gate runs live in your browser at [preflight.pathmode.io](https://preflight.pathmode.io).
 
+## See it work
+
+[Fieldnote](https://github.com/pathmodeio/fieldnote) is a small fictional billing app whose ticket
+FN-412 asks for a `Cancel plan` button. Given one instruction, `implement FN-412`, Claude Code with
+this plugin changed no product code. It drafted an `intent.md` and stopped:
+
+> FN-412 reads like a one-button change, but it leaves one billing decision open that I don't
+> think I should make for you.
+>
+> **The catch:** the only code that cancels a subscription today is `revokeAccess`
+> (`src/billing/access.ts:13`). It was written for refunds, and it ends access the moment it's
+> called. If the new button calls it, anyone who cancels loses the rest of a month they've already
+> paid for, with no refund.
+
+The preflight on the file it wrote:
+
+```text
+✓ Preflight passed. 6/6 checks.
+⛔ Not ready to hand to an agent: 4 product choices still unresolved in Pathmode.
+  ⛔ When a customer cancels, does access end immediately or at the end of the period they have already paid for?
+  ⛔ Does cancelling refund any unused part of the current period?
+  ⛔ Can a customer undo a scheduled cancellation before the period ends?
+  ⛔ What happens when a past-due (payment failed) customer cancels?
+```
+
+Recorded 2026-09-25 with plugin 0.1.35 and server 1.34.0, no API key, in 61 seconds. Another run
+may word it differently or find different choices; [RUN.md](https://github.com/pathmodeio/fieldnote/blob/run-4/fn-412-keyless-proposal/RUN.md)
+lists every tool call. The verdict is deterministic, so running `npx -y @pathmode/cli preflight` on
+that branch reproduces it.
+
+**Three names, one check.** `/preflight` is what you type in Claude Code's chat.
+`check_intent_readiness` is the MCP tool the agent calls on its own. `npx @pathmode/cli preflight`
+runs the same gate in a terminal or in CI. All three grade with the same code.
+
+**What a pass means.** The six checks read your text against a fixed vocabulary: a specific
+title, an objective with an actor and a concrete problem, observable outcomes, a hard constraint,
+an edge case with its expected behavior, and a runnable check. A pass says the spec is complete
+enough to build from. It cannot say the decision is right, and an open product choice still blocks
+it, because a recommendation is an assumption until a person decides. Schema validation (the
+[IntentSpec Action](https://github.com/pathmodeio/validate-intentspec-action)) checks only
+structure, and whether the outcomes happened is for verification after the build.
+
 ## Install
 
 ```
@@ -81,39 +123,8 @@ verdict the demo page gives.
 
 The plugin registers its own `pathmode` MCP server, so remove the older entry from your project `.mcp.json` (or `claude_desktop_config.json`) to avoid a duplicate. Skills previously copied into `.claude/skills/` via `install-skills` can also be deleted — the plugin's copies supersede them.
 
-## Developing
+## Contributing
 
-Everything runs from this repository. Nothing here needs the Pathmode monorepo, an account, or a key.
-
-```
-git clone https://github.com/pathmodeio/claude-plugin
-cd claude-plugin
-npm ci
-npm test                # the session hook's tests
-npm run validate        # claude plugin validate . --strict
-npm run check:skills    # skills/ against the pinned server version
-```
-
-`hooks/` and `commands/` are authored here. Change them, add a test, open a pull request. CI runs
-the three commands above on every pull request.
-
-**Releasing.** Bump `version` in `.claude-plugin/plugin.json`, merge, and tag. Installed plugins
-auto-update. There is no publish step and no monorepo step.
-
-**What is mirrored, and why you should not edit it here.** `skills/` and `readiness-corpus.json`
-are copies. They are owned by the Pathmode monorepo, where `skills/` is the source the MCP server
-itself ships and the corpus is what Pathmode's cross-implementation parity tests run against. They
-arrive here only through pull requests titled `sync(skills):`. A hand edit to `skills/` fails CI:
-`npm run check:skills` compares every skill against the skills inside the exact
-`@pathmode/mcp-server` version pinned in [`.mcp.json`](.mcp.json), so a copy that has drifted from
-the server the plugin actually launches is caught before it ships. The corpus has no equivalent
-automatic check, because the server package does not ship it; treat it as read-only and report
-problems as issues.
-
-Because the check compares against the pinned version, a skill change reaches this repo only after
-a server release carrying it has been published and pinned. That ordering is deliberate: the skills
-you get and the tools they call are always from the same server build.
-
-**Configuration.** The server reads the key from `PATHMODE_API_KEY`, injected from the
-keychain-backed `${user_config.api_key}`. Blank or unsubstituted values fall through to keyless
-local mode (guarded in the server's `loadConfig`).
+Hooks and commands are developed in this repository; `skills/` and the calibration corpus are
+mirrored from the Pathmode monorepo and must not be edited here. [CONTRIBUTING.md](CONTRIBUTING.md)
+covers the checks CI runs, releasing, and what is mirrored.
