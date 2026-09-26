@@ -5,6 +5,9 @@ description: Interview the user about their development workflow and capture the
 
 <what-to-do>
 
+For team review, run npx @pathmode/mcp-server@latest adopt in the repository. It prints a link and a code; give both to the person for browser approval. If it reports AUTHORIZATION_PENDING, stop and rerun the same command after approval. No spec is uploaded before approval. The browser-generated `adopt pm_adopt_...` command still works.
+
+
 Walk the user through the workflow questions below. Ask ONE question at a time. For each question, propose your best-guess answer based on what you can see in the repo (package.json scripts, CI config, README, existing PRs). The user accepts or corrects.
 
 Questions to cover (in order):
