@@ -77,6 +77,7 @@ Each case records **where its defect actually shipped**, and they are not all eq
 |---|---|
 | prose sections are content, not absence | shipped in `<= 1.26.3`, fixed in `1.27.0` |
 | non-English is unconfirmed, never absent | the known limitation the four-state verdict reports honestly |
+| `## Why` is the objective, `## What` is not the outcomes | shipped in `<= 1.36.1`, fixed in `1.37.0` |
 | italic text the author wrote is content | never released; introduced and fixed between two commits |
 | a subsection heading is not a verification check | never released; same |
 | a hard-wrapped bullet is one item | never released; same |
