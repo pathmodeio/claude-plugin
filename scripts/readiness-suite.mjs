@@ -178,12 +178,14 @@ const LABEL_TO_GATE = {
 /**
  * Blocker sentence -> gate, so a quoted extraction can be attributed to the dimension it came
  * from. Best-effort by design: the strip is the authoritative source of STATE, and this only
- * decides which failure a quote is printed under. `outcomes` has two sentences because the gate
- * fails two ways, on count and on measurability.
+ * decides which failure a quote is printed under. `objective` and `outcomes` have two sentences
+ * each because each gate fails two ways: objective as absent or vague, outcomes on count or on
+ * measurability.
  */
 const BLOCKER_TO_GATE = [
     [/^Title is missing or generic/, 'goal'],
     [/^Objective is too vague/, 'objective'],
+    [/^No objective found/, 'objective'],
     [/^Outcomes are not all measurable/, 'outcomes'],
     [/^Fewer than two outcomes/, 'outcomes'],
     [/^No hard constraint/, 'constraints'],

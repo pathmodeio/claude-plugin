@@ -73,5 +73,12 @@
     "why": "The gates match a fixed English vocabulary, so they cannot confirm this objective or constraint. That is a limit of the gate, and the verdict has to say so: 'unconfirmed' means it read the text and its word lists could not confirm it, which is different from claiming nothing was written. An audit of real specs found this class of failure is usually ours, not the author's.",
     "provenance": "the known limitation the four-state verdict exists to report honestly",
     "expect": { "objective": "unconfirmed", "constraints": "unconfirmed" }
+  },
+  {
+    "name": "## Why is the objective, ## What is not the outcomes",
+    "file": "adlc-what-why.md",
+    "why": "The What/Why sample from a widely shared ADLC explainer. The gate reported the objective as nothing found and then called it too vague, about text it never read. `## Why` is now an objective alias and is judged on its words; `## What` usually states the solution, so it is named in a hint and never graded as outcomes.",
+    "provenance": "shipped in `<= 1.36.1`, fixed in `1.37.0`",
+    "expect": { "objective": "unconfirmed", "outcomes": "absent" }
   }
 ]
