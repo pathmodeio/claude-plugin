@@ -60,11 +60,19 @@ structure, and whether the outcomes happened is for verification after the build
 
 No API key needed. Keyless installs run in **local mode**: specs live in [`intent.md`](https://intentspec.org/intent-md) in your project, nothing leaves your machine, and 10 local MCP tools are available (including `check_intent_readiness`, the deterministic preflight, `confirm_intent_dimension` to resolve a gate that read your text but could not confirm it, and `answer_product_choice` to record a person's explicit answer to an open product choice).
 
-To sync with a Pathmode workspace (33 tools: evidence queries, revision-bound PM requests, agent-proposed corrections, intent graph, verification recording), create an API key at [pathmode.io/settings](https://pathmode.io/settings) and enter it when the plugin prompts for configuration. The key is stored in your OS keychain, never in a config file.
+Leave the optional API key empty when the plugin prompts for configuration. When your saved `intent.md` is ready for team review, ask your agent to run this from its repository:
+
+```bash
+npx @pathmode/mcp-server@latest adopt
+```
+
+The agent gives you a link and code. Open the link, sign up or sign in, choose a workspace and Product, and approve. No spec is uploaded before approval. The command polls for about 100 seconds and can collect approval and upload in that run. If it exits with `AUTHORIZATION_PENDING`, ask the agent to rerun the same command after approval; the approval request expires after 15 minutes. Restart or reconnect the MCP client after connecting to load workspace tools.
+
+For workspace API access without a local intent, you can still create an API key at [pathmode.io/settings](https://pathmode.io/settings) and enter it in the plugin configuration. This authenticates workspace tools but does not adopt a repository draft.
 
 ## What's bundled
 
-**MCP server** — `@pathmode/mcp-server@1.36.0`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
+**MCP server** — `@pathmode/mcp-server@1.36.1`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
 
 **Check the gate yourself** — `node scripts/readiness-suite.mjs` runs the pinned server's preflight over 111 labelled field fixtures and a set of whole `intent.md` documents, and prints where it disagrees. Read [CALIBRATION.md](CALIBRATION.md) first: the field score is a regression baseline, not an accuracy claim.
 
