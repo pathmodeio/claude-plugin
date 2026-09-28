@@ -1,11 +1,11 @@
 ---
-title: "Parempi hakukokemus"
+title: "Bessere Sucherfahrung"
 ---
 
-# Parempi hakukokemus
+# Bessere Sucherfahrung
 
 ## Objective
-Käyttäjät eivät löydä tuotteita hakutoiminnolla, koska haku ei ymmärrä taivutusmuotoja.
+Nutzer finden keine Produkte über die Suche, weil die Suche keine Flexionsformen versteht.
 
 ## Constraints
-Ei saa hidastaa sivun latausta.
+Darf die Seite nicht verlangsamen.

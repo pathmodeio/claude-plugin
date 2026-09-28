@@ -68,10 +68,10 @@
     }
   },
   {
-    "name": "non-English is unconfirmed, never absent",
+    "name": "an unread language is unconfirmed, never absent",
     "file": "non-english-prose.md",
-    "why": "The gates match a fixed English vocabulary, so they cannot confirm this objective or constraint. That is a limit of the gate, and the verdict has to say so: 'unconfirmed' means it read the text and its word lists could not confirm it, which is different from claiming nothing was written. An audit of real specs found this class of failure is usually ours, not the author's.",
-    "provenance": "the known limitation the four-state verdict exists to report honestly",
+    "why": "The gates match a fixed English and Finnish vocabulary, so they cannot confirm this German objective or constraint. That is a limit of the gate, and the verdict has to say so: 'unconfirmed' means it read the text and its word lists could not confirm it, which is different from claiming nothing was written. An audit of real specs found this class of failure is usually ours, not the author's.",
+    "provenance": "the known limitation the four-state verdict exists to report honestly; the sample was Finnish until 1.38.0 started grading Finnish",
     "expect": { "objective": "unconfirmed", "constraints": "unconfirmed" }
   },
   {
