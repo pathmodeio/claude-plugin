@@ -23,7 +23,7 @@ Three things get confused here, and they are not the same claim:
 3. **Whether the spec describes the right product decision.** **Nothing here measures this**, and
    no corpus of this shape could. A spec can score 6/6 and be a bad idea, clearly stated.
 
-Part A is a **regression baseline, not independent validation.** These 111 fixtures were written
+Part A is a **regression baseline, not independent validation.** These 192 fixtures were written
 alongside the rules they score, and the rules were tuned until they agreed. A high score is
 therefore evidence that the gate still behaves as it did when it was calibrated. It is not
 evidence that the gate generalizes. Independently collected, previously unseen specs would be
@@ -76,7 +76,7 @@ Each case records **where its defect actually shipped**, and they are not all eq
 | Case | Provenance |
 |---|---|
 | prose sections are content, not absence | shipped in `<= 1.26.3`, fixed in `1.27.0` |
-| non-English is unconfirmed, never absent | the known limitation the four-state verdict reports honestly |
+| an unread language is unconfirmed, never absent | the known limitation the four-state verdict reports honestly |
 | `## Why` is the objective, `## What` is not the outcomes | shipped in `<= 1.36.1`, fixed in `1.37.0` |
 | italic text the author wrote is content | never released; introduced and fixed between two commits |
 | a subsection heading is not a verification check | never released; same |
@@ -106,9 +106,10 @@ nothing was written.
 
 ## Known limitations, stated plainly
 
-- The gates match a **fixed English vocabulary**. A non-English objective cannot be confirmed, and
-  reports as `unconfirmed`. Part B has a Finnish case that holds this behaviour honest.
-- 111 fixtures is small, and they are **our own authored examples**, not sampled from real repos.
+- The gates match a **fixed English and Finnish vocabulary**. An objective in any other language
+  cannot be confirmed, and reports as `unconfirmed`. Part B has a German case that holds this
+  behaviour honest.
+- 192 fixtures is small, and they are **our own authored examples**, not sampled from real repos.
 - The gates judge **phrasing**, not correctness, novelty, feasibility, or whether the decision is
   a good one.
 - Part A cannot detect a document-parsing regression, as shown above.

@@ -74,7 +74,7 @@ For workspace API access without a local intent, you can still create an API key
 
 **MCP server** — `@pathmode/mcp-server@1.38.0`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
 
-**Check the gate yourself** — `node scripts/readiness-suite.mjs` runs the pinned server's preflight over 111 labelled field fixtures and a set of whole `intent.md` documents, and prints where it disagrees. Read [CALIBRATION.md](CALIBRATION.md) first: the field score is a regression baseline, not an accuracy claim.
+**Check the gate yourself** — `node scripts/readiness-suite.mjs` runs the pinned server's preflight over 192 labelled field fixtures and a set of whole `intent.md` documents, and prints where it disagrees. Read [CALIBRATION.md](CALIBRATION.md) first: the field score is a regression baseline, not an accuracy claim.
 
 **Command** — `/preflight` runs the deterministic six-gate readiness check and always ends in a verdict: on your `intent.md` if one exists, on a spec described in the conversation, or on a provisional draft it builds from context with assumptions marked.
 
@@ -109,9 +109,9 @@ completely silent in repos with no intent. If you would rather it did not run, r
 against. That tuning set is in this repo, mirrored from the monorepo that owns it, so you can check
 it rather than take the number on faith.
 
-[`readiness-corpus.json`](./readiness-corpus.json) holds 111 hand-labeled spec fragments, 58 labeled
-`good` and 53 labeled `vague`, spread across the gates: 24 objectives, 37 outcomes, 20 titles,
-18 constraints, 12 verification checks. Each item carries the text, the label, and the tags that
+[`readiness-corpus.json`](./readiness-corpus.json) holds 192 hand-labeled spec fragments (121 English, 71 Finnish),
+101 labeled `good` and 91 labeled `vague`, spread across the gates: 44 objectives, 78 outcomes,
+27 titles, 27 constraints, 16 verification checks. Each item carries the text, the label, and the tags that
 explain the call:
 
 ```json
