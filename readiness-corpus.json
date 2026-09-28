@@ -643,6 +643,106 @@
     ]
   },
   {
+    "kind": "outcome",
+    "text": "An import with a duplicate ID is refused and names the existing row.",
+    "label": "good",
+    "tags": [
+      "refusal",
+      "names-the-case",
+      "refusal-names"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Merging is refused until every required reviewer has approved the change.",
+    "label": "good",
+    "tags": [
+      "refusal",
+      "refusal-condition"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "A token issued for another workspace is rejected.",
+    "label": "good",
+    "tags": [
+      "refusal",
+      "names-the-case"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Checkout rejects an expired card before it is charged.",
+    "label": "good",
+    "tags": [
+      "refusal",
+      "refusal-condition",
+      "active-voice"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Every exported EIR row names the PIR or AIR it serves and the decision point it must be delivered by; an export with a row missing either is refused and the refusal names the row.",
+    "label": "good",
+    "tags": [
+      "refusal",
+      "names-the-case",
+      "refusal-names",
+      "rytv-demo-2026-09-27"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Bad requests are rejected.",
+    "label": "vague",
+    "tags": [
+      "refusal",
+      "bare-category",
+      "genuinely-vague"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Invalid input is refused.",
+    "label": "vague",
+    "tags": [
+      "refusal",
+      "bare-category",
+      "genuinely-vague"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Harmful prompts are refused.",
+    "label": "vague",
+    "tags": [
+      "refusal",
+      "bare-category",
+      "genuinely-vague"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Dangerous changes are blocked.",
+    "label": "vague",
+    "tags": [
+      "refusal",
+      "bare-category",
+      "blocked-synonym",
+      "genuinely-vague"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Rejected ideas are handled properly.",
+    "label": "vague",
+    "tags": [
+      "refusal",
+      "adjective-not-verb",
+      "genuinely-vague"
+    ]
+  },
+  {
     "kind": "title",
     "text": "Bulk edit for evidence items",
     "label": "good",
@@ -1052,6 +1152,796 @@
     "label": "vague",
     "tags": [
       "placeholder"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Työnhakijat menettävät haastatteluaikoja, koska kalenterikutsut päätyvät roskapostiin eikä niitä lähetetä uudelleen.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "named-role",
+      "problem-framing",
+      "plural-actor"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Vähennä haastatteluista poisjääntejä työnhakijoilla, jotka eivät löydä kokouslinkkiä ajoissa.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "named-role",
+      "problem-framing"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Mahdollista kiireisille vanhemmille tilin käyttöönoton viimeistely alle 15 minuutissa ilman tukipuhelua.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "named-role",
+      "capability-framing",
+      "implicit-numeric"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Anna kuraattoreille tapa hylätä heikot ehdotukset kerralla sen sijaan, että jokainen arvioidaan erikseen.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "named-role",
+      "capability-framing",
+      "allative-actor"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Perustajat keskeyttävät hinnoittelusivun kesken, koska käyttäjäkohtaista hintalaskelmaa ei näytetä ennen kassaa.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "named-role",
+      "problem-framing",
+      "plural-actor"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Perustajien pitäisi nähdä yhdellä silmäyksellä, mitkä heidän kokeiluistaan tuovat yhä liikennettä.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "plural-actor",
+      "capability-framing",
+      "observable-no-number"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Jake ei pysty täsmäyttämään vietyjä laskuja, koska rivit jakautuvat sivuille ilman välisummia.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "named-person",
+      "problem-framing"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Anna ensikertalaisille työnhakijoille mahdollisuus esikatsella, miltä heidän profiilinsa näyttää rekrytoijille.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "named-role",
+      "capability-framing",
+      "compound-actor"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Tilaajaorganisaatiot, kuten kaupungit ja Senaatti-kiinteistöt, sekä niiden puolesta vaatimuksia kirjoittavat konsultit määrittelevät tietomallinnuksen tietovaatimukset käsin RYTV-tilaajaohjeen Word- ja Excel-pohjiin. Jokaisen EIR-rivin pitäisi palvella hankkeen tietovaatimusta (PIR), mutta Liite 2 -taulukossa linkki on käsin kirjoitettu sarake, joten mikään ei estä vaatimusta päätymästä tarjouspyyntöön ilman PIR-linkkiä.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "native",
+      "rytv-probe-2026-09-27",
+      "compound-actor",
+      "problem-framing"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Opiskelija ei ymmärrä, miksi ilmoittautuminen kurssille ei onnistu.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "native",
+      "named-role",
+      "problem-framing"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Kehitystiimit menettävät päivän jokaisessa julkaisussa, koska ympäristöjen asetukset kopioidaan käsin.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "native",
+      "compound-actor",
+      "problem-framing"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Tee kojelaudasta parempi.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "genuinely-vague",
+      "no-actor",
+      "platitude"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Paranna yleistä käyttöönottokokemusta, jotta käyttäjät olisivat tyytyväisempiä.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "genuinely-vague",
+      "platitude",
+      "no-concrete-change"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Tee kaikesta nopeampaa ja laadukkaampaa.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "genuinely-vague",
+      "no-actor",
+      "platitude"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Paranna kojelaudan yleistä käyttökokemusta.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "improve-ux",
+      "genuinely-vague",
+      "no-concrete-change"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Optimoi suppilo ja saa aikaan parempia tuloksia.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "make-x-better",
+      "genuinely-vague",
+      "no-concrete-change"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Tarjoa luokkansa paras, saumaton kokemus, joka ilahduttaa käyttäjiä jokaisessa kohtaamisessa.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "genuinely-vague",
+      "buzzwords",
+      "implicit-actor"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Hyödynnä huippumodernia tekoälyä mullistamaan tapa, jolla tiimit vapauttavat koko potentiaalinsa.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "genuinely-vague",
+      "buzzwords",
+      "plural-actor"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Anna käyttäjille mahdollisuus tehdä saumattomasti enemmän pienemmällä kitkalla alusta loppuun.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "genuinely-vague",
+      "buzzwords",
+      "plural-actor"
+    ]
+  },
+  {
+    "kind": "objective",
+    "text": "Uudista seuraavan sukupolven työnkulku älykkäämmäksi, nopeammaksi ja ilahduttavammaksi.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "genuinely-vague",
+      "buzzwords",
+      "no-actor"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Käyttäjät voivat jatkaa luonnosta miltä tahansa laitteelta ja palaavat täsmälleen siihen kenttään, johon jäivät.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "plural-actor",
+      "capability-framing"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Käyttöönoton läpäisyaste nousee 75 prosenttiin ensimmäisen istunnon aikana.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "numeric"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "CSV-viennit eivät enää pudota rivejä, kun aineisto ylittää yhden tulossivun.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "observable-state",
+      "no-number"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Jokainen uusi tuotetyötila on täysin valmiiksi täytetty esimerkkiaineistolla ja yhdellä aloitusintentillä.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "observable-state"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Ylläpitäjät voivat avata vain luku -esikatselutilan ja poistua siitä ilman, että heidän istuntonsa kirjautuu ulos.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "capability-framing",
+      "named-role"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Tuonnin uudelleenajo epäonnistuneen synkronoinnin jälkeen ei tuota kaksoiskappaleita.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "observable-state",
+      "no-number"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Yöllinen täsmäytys jättää kirjanpitoon nolla täsmäämätöntä tietuetta.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "word-number",
+      "bare-zero",
+      "no-digit"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Hinnastosta jää yhdistämisen jälkeen voimaan vain yksi kopio.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "word-number",
+      "quantifier",
+      "only-one"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Haarautumien tunnistus havaitsee kaikki kolme lisättyä haaraa jokaisella harjoitusajolla.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "word-number",
+      "quantifier",
+      "all-n"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Jokainen julkaisu toimitetaan enintään kahdella manuaalisella QA-hyväksynnällä.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "word-number",
+      "quantifier",
+      "at-most"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Jokainen viety EIR-rivi nimeää PIR- tai AIR-vaatimuksen, jota se palvelee, ja päätöspisteen, johon mennessä se on toimitettava; vienti, josta jompikumpi puuttuu, estetään ja esto nimeää rivin.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "native",
+      "rytv-probe-2026-09-27",
+      "observable-state"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Ennen vientiä palvelu listaa jokaisen PIR-vaatimuksen, jota mikään EIR-rivi ei palvele, jotta laatija näkee aukot ennen tarjouspyynnön lähtöä.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "native",
+      "rytv-probe-2026-09-27",
+      "capability-framing"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Tilaaja voi viedä hankkeen kaikki vaatimukset avoimissa muodoissa ja avata ne ilman palvelua.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "native",
+      "rytv-probe-2026-09-27",
+      "capability-framing"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Tee kokemuksesta parempi kaikille.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "genuinely-vague"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Käyttäjät ovat tyytyväisiä ja tuote tuntuu nopeammalta.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "genuinely-vague",
+      "plural-actor"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Paranna yleistä laatua kautta linjan.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "genuinely-vague"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Tuote tuntuu nopeammalta ja hiotummalta.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "genuinely-vague",
+      "unverifiable"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Luokkansa paras kassa, jota asiakkaat rakastavat.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "platitude",
+      "unverifiable"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Sitoutuneisuus paranee merkityksellisesti kautta linjan.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "genuinely-vague",
+      "improve-x"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Tee tuotteesta 100 % upea ja ilahduttava kaikille sen käyttäjille.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "numeric",
+      "fake-precision",
+      "meaningless-number"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Kasvata asiakastyytyväisyyttä 200 % aidosti intuitiivisen käyttöliittymän avulla.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "numeric",
+      "fake-precision",
+      "unmeasurable-baseline"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Jonain päivänä jokainen tiimi luottaa taas tiekarttaan.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "word-number-trap",
+      "idiom-one-day"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Uudesta kojelaudasta tulee yksi tuotteen käytetyimmistä sivuista.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "word-number-trap",
+      "one-of-the"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Nollakonfiguraation asennus, joka vain toimii kaikille.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "word-number-trap",
+      "hyphenated-zero"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Tuonti, jossa on päällekkäinen tunniste, hylätään, ja hylkäys nimeää olemassa olevan rivin.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "refusal",
+      "names-the-case",
+      "refusal-names"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Yhdistäminen hylätään, kunnes jokainen vaadittu arvioija on hyväksynyt muutoksen.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "refusal",
+      "refusal-condition"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Tunniste, joka on myönnetty toiselle työtilalle, hylätään.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "refusal",
+      "names-the-case"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Kassa hylkää vanhentuneen kortin ennen kuin se veloitetaan.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "refusal",
+      "refusal-condition",
+      "active-voice"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Huonot pyynnöt hylätään.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "refusal",
+      "bare-category",
+      "genuinely-vague"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Virheelliset syötteet hylätään.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "refusal",
+      "bare-category",
+      "genuinely-vague"
+    ]
+  },
+  {
+    "kind": "outcome",
+    "text": "Vaaralliset muutokset estetään.",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "refusal",
+      "bare-category",
+      "blocked-synonym",
+      "genuinely-vague"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Massamuokkaus havaintoaineistolle",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "short-noun-phrase"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Lähetyksen peruutus",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "short-noun-phrase",
+      "two-words"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Tumma tila editoriin",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "short-noun-phrase"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Uusi ominaisuus",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "generic-filler"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Sekalaiset korjaukset",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "generic-filler"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Erilaisia parannuksia",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "generic-filler"
+    ]
+  },
+  {
+    "kind": "title",
+    "text": "Nimetön intentti",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "placeholder"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "Esikatselutila ei saa koskaan lähettää sähköposteja.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "prohibition"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "Ei henkilötietoja selaimen lokeihin.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "prohibition",
+      "short"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "Vasteaika pysyy alle 200 ms:n.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "bound",
+      "numeric"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "GDPR-vaatimukset koskevat kaikkea EU-liikennettä ja niitä noudatetaan.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "obligation"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "Ei muutoksia API:in.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "native",
+      "prohibition",
+      "short"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "nopea",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "adjective"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "turvallinen",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "adjective"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "käyttäjäystävällinen",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "adjective"
+    ]
+  },
+  {
+    "kind": "constraint",
+    "text": "toimii hyvin",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "adjective"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "Aja tuonti kahdesti ja varmista, ettei tietueita monistu.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "translation",
+      "runnable"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "Vie hanke, jonka yhdeltä EIR-riviltä puuttuu PIR-linkki, ja varmista, että vienti estetään ja virhe nimeää rivin.",
+    "label": "good",
+    "tags": [
+      "fi",
+      "native",
+      "rytv-probe-2026-09-27",
+      "runnable"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "testaa se",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "gesture"
+    ]
+  },
+  {
+    "kind": "verification",
+    "text": "manuaalinen testaus",
+    "label": "vague",
+    "tags": [
+      "fi",
+      "translation",
+      "gesture"
     ]
   }
 ]
