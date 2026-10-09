@@ -1,6 +1,6 @@
 ---
 name: compile-intent
-description: Build a structured intent spec through guided conversation, one decision at a time with a recommended answer for each. Use when the user wants to define what to build, sharpen a vague idea into a testable spec, or capture product intent before writing code. Writes intent.md in the project root and (if an API key is set) syncs to a Pathmode workspace.
+description: Build a structured intent spec through guided conversation, one decision at a time with a recommended answer for each. Use when the user wants to define what to build, sharpen a vague idea into a testable spec, or capture product intent before writing code. Writes intent.md in the project root as a local draft; a Pathmode workspace sees it after adoption.
 ---
 
 <what-to-do>
@@ -25,7 +25,7 @@ The compile-intent prompt is interrogative on purpose. It pushes back on vague l
 
 ## Output shape
 
-`intent.md` at the project root:
+`intent.md` at the project root, abridged (`intent_save` writes it; a section appears only when it has content):
 
 ```markdown
 ---
@@ -44,14 +44,18 @@ status: "draft"
 ## Outcomes
 - [ ] [Observable state change, testable in under 5 minutes]
 
+## Constraints
+- [Hard limit — what must never happen]
+
 ## Edge Cases
 - **[Scenario]**: [Expected behavior]
 
-## Constraints
-- [Hard limit — what must never happen]
+## Verification
+**[Check kind]**:
+- [ ] [A check concrete enough to run without asking the author]
 ```
 
-If `PATHMODE_API_KEY` is set, the spec also syncs to the user's Pathmode workspace and becomes visible to other team members and other agents.
+A new spec is saved as a local draft and stays on this machine, even with `PATHMODE_API_KEY` set. Adoption (`npx @pathmode/mcp-server@latest adopt`, approved in the browser) brings it into the Pathmode workspace, where team members and their agents can see it. Once `intent.md` is connected, each save also syncs to the workspace.
 
 ## Evidence in a file that lives in git
 

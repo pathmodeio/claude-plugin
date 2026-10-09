@@ -5,7 +5,7 @@ description: Break an intent spec into 3-10 paste-ready tickets for Linear, Jira
 
 <what-to-do>
 
-Load the active intent from `intent.md` in the project root first. That file is bound to this repository and remains the content authority even when `PATHMODE_API_KEY` is set. Only call `get_current_intent` when no local file exists.
+Load the active intent from `intent.md` in the project root first. That file is bound to this repository and remains the content authority even when `PATHMODE_API_KEY` is set. If the repository has no `intent.md`, ask the user which saved intent they mean and load it with `get_intent`. With a workspace connected, `get_current_intent` picks by a workspace heuristic and can return an intent unrelated to this repository.
 
 Analyze the spec. The outcomes are the natural decomposition unit — each outcome typically maps to 1-3 tickets, depending on complexity.
 

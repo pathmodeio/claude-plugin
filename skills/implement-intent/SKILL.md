@@ -18,15 +18,15 @@ Read `intent.md` from the project root first. It is the repository-bound authori
 
 If Preflight has unresolved blockers, show its exact verdict and work through the `preflight` repair loop one targeted question at a time. Do not silently begin implementation from a failing spec.
 
-The user may explicitly accept named blockers and ask you to proceed. That is **accepted risk**, not a waiver: a waiver says a dimension does not apply, while accepted risk says the gap is real. Preserve the judgment by calling `intent_save` with the complete current spec and an added decision:
+In keyless mode, the user may explicitly accept named blockers and ask you to proceed. That is **accepted risk**, not a waiver: a waiver says a dimension does not apply, while accepted risk says the gap is real. Preserve the judgment by calling `intent_save` with the complete current spec and an added decision:
 
 - `choice`: `Proceed despite preflight blockers: <exact gate names>`
 - `ruledOut`: `Repair every blocker before implementation`
 - `reason`: the user's stated reason, without embellishment
 
-Re-run Preflight afterward and show the still-failing verdict. Never turn accepted risk into a green check. The acceptance authorizes only this implementation conversation; a later agent must ask again unless it has fresh human authorization for the exact revision.
+Re-run Preflight afterward and show the still-failing verdict. Never turn accepted risk into a green check. The acceptance covers only this implementation conversation; a later agent must ask again.
 
-In connected mode, a save changes the repository-body revision. Stop until a signed-in product manager authorizes that exact revision. Then call `get_agent_prompt`: use `mode: execute` when Preflight passes, or `mode: draft` when the user explicitly accepted still-visible blockers. Stop on an open change request or a pending, rejected, or stale authorization banner. Fetch `get_constitution` before implementation.
+In connected mode, accepted risk does not unlock implementation: `get_agent_prompt` with `mode: execute` refuses a spec that fails its checks, and that refusal means do not implement, so keep repairing the blockers with the user. A save changes the repository-body revision. Stop until a signed-in product manager authorizes that exact revision. Then call `get_agent_prompt` with `mode: execute` and implement only when it succeeds. Stop on an open change request or a pending, rejected, or stale authorization banner. Fetch `get_constitution` before implementation.
 
 In keyless mode, do not call `get_agent_prompt`, `get_constitution`, or other cloud-only tools. Use `intent.md`, the repository instructions, and the codebase itself as the implementation context.
 
@@ -39,7 +39,7 @@ Create a small implementation plan mapped to the outcomes. Make only the changes
 ## Three independent judgments
 
 - **Preflight** asks whether the spec is concrete enough to build and verify.
-- **Accepted risk** records a human decision to proceed while a known gap remains. It never changes the Preflight verdict.
+- **Accepted risk** (keyless mode only) records a human decision to proceed while a known gap remains. It never changes the Preflight verdict.
 - **Authorization** confirms that a human permits an agent-originated repository revision to be implemented. It does not make a failing gate pass.
 
 ## Pull-request delivery
