@@ -5,9 +5,9 @@ description: Design the executable feedback loop for an intent — fastest check
 
 <what-to-do>
 
-Load the active intent from `intent.md` in the project root first. That file is bound to this repository and remains the content authority even when `PATHMODE_API_KEY` is set. Only call `get_current_intent` when no local file exists.
+Load the active intent from `intent.md` in the project root first. That file is bound to this repository and remains the content authority even when `PATHMODE_API_KEY` is set. If the repository has no `intent.md`, ask the user which saved intent they mean and load it with `get_intent`. With a workspace connected, `get_current_intent` picks by a workspace heuristic and can return an intent unrelated to this repository.
 
-Walk the user through the five verification dimensions below. Ask ONE question at a time. For each question, propose your best-guess answer based on the intent's outcomes and what's visible in the codebase (existing tests, observability hooks, CI config).
+Walk the user through the five verification dimensions below. Ask one question at a time. For each question, propose your best-guess answer based on the intent's outcomes and what's visible in the codebase (existing tests, observability hooks, CI config).
 
 The five dimensions:
 

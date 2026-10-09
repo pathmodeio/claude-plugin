@@ -19,7 +19,7 @@ Report:
 - Constraint violations (specific files/lines)
 - Edge cases that look unhandled
 
-Do NOT review for unrelated code style, formatting, or quality concerns. That's not this skill's job. Stay anchored to the intent.
+Leave unrelated code style, formatting, and quality concerns out of this review; it is anchored to the intent.
 
 </what-to-do>
 

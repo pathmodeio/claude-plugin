@@ -5,7 +5,7 @@ description: Capture context at the end of an implementation session — decisio
 
 <what-to-do>
 
-Load the active intent. Read `intent.md` from the project root first — the file is bound to this repository, which makes it the authority on what this session was working under. If `PATHMODE_API_KEY` is set and the file's frontmatter carries a cloud id, use that id for team-only calls below. Do not let `get_current_intent` choose the intent for you when a local file exists — "current" is a workspace heuristic, not a repo binding. Only fall back to `get_current_intent` when no local file exists.
+Load the active intent. Read `intent.md` from the project root first — the file is bound to this repository, which makes it the authority on what this session was working under. If `PATHMODE_API_KEY` is set and the file's frontmatter carries a cloud id, use that id for team-only calls below. Do not let `get_current_intent` choose the intent — "current" is a workspace heuristic, not a repo binding. If the repository has no `intent.md`, ask the user which saved intent this session worked under and load it with `get_intent`.
 
 Summarize the session in four buckets:
 
@@ -40,9 +40,9 @@ The "why" and the "what's still implicit" are the parts that disappear if you do
 - `shipped` — code is merged AND the outcome is observable in production
 - `verified` — the outcome metric has held for at least one full cycle (e.g., one week, one release)
 
-**When the change ships through a pull request, do NOT call `update_intent_status` yourself.** If the workspace has GitHub connected, the merge reads the real diff, grades it against the spec, moves the intent to Shipped, and records what the verdict rested on. The webhook skips intents that are already shipped, so flipping it early does not just duplicate that work — it suppresses it, replacing a diff-backed verdict with an unverified one. Stamp the reference, let the merge fire, and bump the status by hand only when the change will never appear in a PR.
+When the change ships through a pull request, do not call `update_intent_status` yourself. If the workspace has GitHub connected, the merge reads the real diff, grades it against the spec, moves the intent to Shipped, and records what the verdict rested on. The webhook skips intents that are already shipped, so flipping it early does not just duplicate that work — it suppresses it, replacing a diff-backed verdict with an unverified one. Stamp the reference, let the merge fire, and bump the status by hand only when the change will never appear in a PR.
 
-Do NOT bump to `shipped` if outcomes are only partially delivered. Either leave the status and log the partial delivery as a note, or propose a spec amendment that scopes the outcome to what was actually shipped.
+Do not bump to `shipped` if outcomes are only partially delivered. Either leave the status and log the partial delivery as a note, or propose a spec amendment that scopes the outcome to what was actually shipped.
 
 ## Difference from a commit message
 

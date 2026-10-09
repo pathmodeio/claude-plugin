@@ -5,9 +5,9 @@ description: Adversarial review of an existing intent spec. Walk the spec field-
 
 <what-to-do>
 
-Load the active intent from `intent.md` in the project root first. That file is bound to this repository and remains the content authority even when `PATHMODE_API_KEY` is set. Only call `get_current_intent` when no local file exists. If the file carries a cloud id, use that id for any team-only note call below.
+Load the active intent from `intent.md` in the project root first. That file is bound to this repository and remains the content authority even when `PATHMODE_API_KEY` is set. If the repository has no `intent.md`, ask the user which saved intent they mean and load it with `get_intent`. With a workspace connected, `get_current_intent` picks by a workspace heuristic and can return an intent unrelated to this repository. If the file carries a cloud id, use that id for any team-only note call below.
 
-Walk the spec field-by-field — objective, outcomes, edge cases, constraints. For each field, find the weakest claim and pressure-test it. Ask ONE pointed question at a time. For each question, propose your best-guess answer based on the spec and the codebase.
+Walk the spec field-by-field — objective, outcomes, edge cases, constraints. For each field, find the weakest claim and pressure-test it. Ask one pointed question at a time. For each question, propose your best-guess answer based on the spec and the codebase.
 
 When a weakness is confirmed, edit the spec itself — not a note about it. Write the change back to `intent.md` and save with `intent_save` (it preserves the file's identity and syncs in team mode; use `update_intent` only when no local file exists). Then, in team mode, call `log_implementation_note` to record WHY the change was made: the note reaches the next agent's prompt, the spec carries the change.
 
