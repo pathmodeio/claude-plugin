@@ -72,7 +72,7 @@ For workspace API access without a local intent, you can still create an API key
 
 ## What's bundled
 
-**MCP server** — `@pathmode/mcp-server@1.41.1`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
+**MCP server** — `@pathmode/mcp-server@1.41.2`, pinned so the plugin skills and server tool contract update together. Local mode with no key; cloud mode with one.
 
 **Check the gate yourself** — `node scripts/readiness-suite.mjs` runs the pinned server's preflight over 192 labelled field fixtures and a set of whole `intent.md` documents, and prints where it disagrees. Read [CALIBRATION.md](CALIBRATION.md) first: the field score is a regression baseline, not an accuracy claim.
 
